@@ -3257,3 +3257,32 @@ span#sl {
     text-align: center;
     background: gray;
 }
+.sao {
+    color: #f1f107;
+    padding-block-end: 5px;
+}
+.thumbnail {
+    font-size: large;
+    font-family: none;
+    margin-bottom: 10px;
+    padding-top: 15px;
+    font-style: oblique;
+}
+img.responsive {
+    width: 450px;
+    height: 235px;
+    padding-top: 60px;
+
+}
+.chuthich {
+    font-style: oblique;
+    font-size: 18px;
+    font-family: serif;
+}
+.thongtin {
+    font-family: auto;
+    font-size: 18px;
+}
+.row{
+	margin-top: 50px;
+}
