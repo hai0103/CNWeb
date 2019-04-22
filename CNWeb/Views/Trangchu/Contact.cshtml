@@ -1,0 +1,52 @@
+﻿
+@{
+    ViewBag.Title = "Liên hệ";
+    Layout = "~/Views/Shared/_ShopLayout.cshtml";
+}
+
+@Html.Partial("BreadcrumbsPartial", "Shared")
+
+<!--contact-start-->
+<div class="contact">
+    <div class="container">
+        <div class="contact-top heading">
+            <h2>Liên hệ</h2>
+        </div>
+        <div class="contact-text">
+            <div class="col-md-3 contact-left">
+                <div class="address">
+                    <h5>Địa chỉ</h5>
+                    <p>Cửa hàng LuLu Shop</p>
+                    <span>236-Hoàng Quốc Việt, Hà Nội</span>
+
+                </div>
+                <div class="address">
+                    <h5>Liêc lạc</h5>
+                    <p>
+                        Tel:1115550001,
+                        <span>Fax:190-4509-494</span>
+                        Email: <a href="mailto:example@email.com">contact@example.com</a>
+                    </p>
+                </div>
+            </div>
+            <div class="col-md-9 contact-right">
+                <form>
+                    <input type="text" placeholder="Họ tên">
+                    <!-- <input type="text" placeholder="Số điện thoại"> -->
+                    <input type="text" placeholder="Email">
+                    <textarea placeholder="Nội dung" required=""></textarea>
+                    <div class="submit-btn">
+                        <input type="submit" value="Gửi">
+                    </div>
+                </form>
+            </div>
+            <div class="clearfix"></div>
+        </div>
+    </div>
+</div>
+<!--contact-end-->
+<!--map-start-->
+<div class="map">
+    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3723.6443964063706!2d105.78423511472492!3d21.046909992534843!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3135ab326aa9bfef%3A0xd60313e072fc5ac4!2zMjM2IEhvw6BuZyBRdeG7kWMgVmnhu4d0LCBD4buVIE5odeG6vywgVOG7qyBMacOqbSwgSMOgIE7hu5lpLCBWaeG7h3QgTmFt!5e0!3m2!1svi!2s!4v1554881220675!5m2!1svi!2s" width="600" height="450" frameborder="0" style="border:0" allowfullscreen></iframe>    
+</div>
+<!--map-end-->
