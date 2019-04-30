@@ -52,6 +52,12 @@
       <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="PagedList, Version=1.17.0.0, Culture=neutral, PublicKeyToken=abbb863e9397c5e1, processorArchitecture=MSIL">
+      <HintPath>..\packages\PagedList.1.17.0.0\lib\net40\PagedList.dll</HintPath>
+    </Reference>
+    <Reference Include="PagedList.Mvc, Version=4.5.0.0, Culture=neutral, PublicKeyToken=abbb863e9397c5e1, processorArchitecture=MSIL">
+      <HintPath>..\packages\PagedList.Mvc.4.5.0.0\lib\net40\PagedList.Mvc.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
@@ -134,12 +140,14 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\DangNhapController.cs" />
     <Compile Include="Controllers\TrangchuController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\Admin.cs" />
     <Compile Include="Models\ChitietDonHang.cs" />
+    <Compile Include="Models\DangNhap.cs" />
     <Compile Include="Models\DonHang.cs" />
     <Compile Include="Models\KhachHang.cs" />
     <Compile Include="Models\LienHe.cs" />
@@ -176,6 +184,7 @@
     <Content Include="Content\images\close.png" />
     <Content Include="Content\images\crossword.png" />
     <Content Include="Content\images\Int2.jpg" />
+    <Content Include="Content\images\lushop1.png" />
     <Content Include="Content\images\meo1.jpg" />
     <Content Include="Content\images\meo2.jpg" />
     <Content Include="Content\images\meo4.jpg" />
@@ -195,6 +204,7 @@
     <Content Include="Content\js\memenu.js" />
     <Content Include="Content\js\responsiveslides.min.js" />
     <Content Include="Content\js\simpleCart.min.js" />
+    <Content Include="Content\PagedList.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -237,6 +247,14 @@
     <Content Include="Views\Trangchu\Products.cshtml" />
     <Content Include="Views\Shared\BreadcrumbsPartial.cshtml" />
     <Content Include="Views\Trangchu\Introduce.cshtml" />
+    <Content Include="Views\Trangchu\ResentNew.cshtml" />
+    <Content Include="Views\Trangchu\NewsDetail.cshtml" />
+    <Content Include="Views\Trangchu\listProduct.cshtml" />
+    <Content Include="Views\Trangchu\ProductDetail.cshtml" />
+    <Content Include="Views\DangNhap\DangNhap.cshtml" />
+    <Content Include="Views\DangNhap\DangKy.cshtml" />
+    <Content Include="Views\Shared\DangNhapPartial.cshtml" />
+    <Content Include="Views\Trangchu\HoSoTK.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

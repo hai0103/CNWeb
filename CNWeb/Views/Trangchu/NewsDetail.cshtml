@@ -1,0 +1,73 @@
+﻿@using CNWeb.Models
+@model TinTuc
+
+
+@{
+    ViewBag.Title = Model.TieuDe;
+    Layout = "~/Views/Shared/_ShopLayout.cshtml";
+}
+
+
+<div class="news">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12 col-sm-9 col-md-9 col-lg-9 news-left">
+                <article class="news-detail">
+                    <header>
+                        <h1 class="title-news">@Model.TieuDe</h1>
+                        <span class="date-news">@Model.NgayDang</span>
+                    </header>
+                    <div class="col-md-12 news-detail-image">
+                        <img src="@Url.Content(Model.HinhAnh)" class="img-responsive" alt="">
+                    </div>
+                    <div class="col-md-12 news-detail-content">
+
+                        <main>
+                            <p>
+                                @Model.NoiDung
+                            </p>
+                        </main>
+                    </div>
+                    <div class="col-md-12 news-share">
+                        <h3>Chia sẻ</h3>
+                        <ul class="icon-share">
+                            <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
+                            <li><a href="#"><i class="fab fa-twitter"></i></a></li>
+                            <li><a href="#"><i class="fab fa-google-plus-g"></i></a></li>
+
+                        </ul>
+                    </div>
+
+                </article>
+
+            </div>
+
+            <div class="col-xs-12 col-sm-3 col-md-3 col-lg-3 news-right">
+                <div class="w_sidebar">
+                    <section class="sky-form">
+                        <h4>Phân loại tin tức</h4>
+                        <div class="row1 row2 scroll-pane">
+
+                            <div class="col col-4">
+                                <label class="checkbox"><input type="checkbox" name="checkbox" checked=""><i></i>Chó</label>
+                                <label class="checkbox"><input type="checkbox" name="checkbox"><i></i>Mèo</label>
+                                <label class="checkbox"><input type="checkbox" name="checkbox"><i></i>Thỏ</label>
+                                <label class="checkbox"><input type="checkbox" name="checkbox"><i></i>Hamster</label>
+                                <label class="checkbox"><input type="checkbox" name="checkbox"><i></i>Nhím</label>
+                            </div>
+                        </div>
+                    </section>
+
+                    <section class="news-new sky-form">
+                        <h4>Tin tức mới nhất</h4>
+                        @Html.Action("ResentNew", "Trangchu")
+                    </section>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<!--news-end
+

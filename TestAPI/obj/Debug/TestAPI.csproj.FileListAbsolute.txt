@@ -1,0 +1,2 @@
+C:\Users\Admin\CNWeb\TestAPI\obj\Debug\TestAPI.csprojAssemblyReference.cache
+C:\Users\Admin\CNWeb\TestAPI\obj\Debug\TestAPI.csproj.CoreCompileInputs.cache

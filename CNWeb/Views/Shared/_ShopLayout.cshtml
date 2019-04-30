@@ -25,6 +25,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
     <script>$(document).ready(function () { $(".memenu").memenu(); });</script>
     <!--dropdown-->
     <script src="~/Content/js/jquery.easydropdown.js"></script>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
 </head>
 <body>
 
@@ -35,7 +36,9 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
             <div class="top-header-main">
                 <div class="col-md-6 top-header-left">
                     <div class="drop">
-
+                        <div class="login-partial">
+                            @Html.Partial("DangNhapPartial")
+                        </div>
                         <div class="clearfix"></div>
                     </div>
                 </div>
@@ -58,7 +61,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
     <!--top-header-->
     <!--start-logo-->
     <div class="logo">
-        <h1>@Html.ActionLink("Lulu Shop", "index", "Trangchu")</h1>
+        
+        <a href="@Url.Action("Index","Trangchu")" class="logo-img"><img class="img-responsive" src="~/Content/images/lushop1.png" alt="" /></a>
     </div>
     <!--start-logo-->
     <!--bottom-header-->

@@ -1,4 +1,6 @@
-﻿
+﻿@using CNWeb.Models;
+@model List<SanPham>
+
 @{
     ViewBag.Title = "LuLu Shop";
     Layout = "~/Views/Shared/_ShopLayout.cshtml";
@@ -61,108 +63,29 @@
     <div class="container">
         <div class="product-top">
             <div class="product-one">
-                <div class="col-md-3 product-left">
-                    <div class="product-main simpleCart_shelfItem">
-                        <a href="single.html" class="mask"><img class="img-responsive zoom-img" src="~/Content/images/cho1.jpg" alt="" /></a>
-                        <div class="product-bottom">
-                            <h3> <a href="single.html" class="mask">Chó Coctan</a></h3>
-                            <h4><a class="item_add" href="#"><i></i></a> <span class=" item_price">$ 329</span></h4>
+                @{
+                    foreach (var item in Model)
+                    {
+                       
+                        <div class="col-md-3 product-left">
+                            <div class="product-main simpleCart_shelfItem">
+                                <a href="@Url.Action("ProductDetail","Trangchu",new { @IdPro = item.IDSanPham})" class="mask"><img class="img-responsive zoom-img" src="@Url.Content(item.HinhAnh)" alt="" /></a>
+                                <div class="product-bottom">
+                                    <h3> <a href="@Url.Action("ProductDetail", "Trangchu", new { @IdPro = item.IDSanPham })" class="mask">@item.TenSanPham</a></h3>
+                                    <h4><a class="item_add" href="#"><i></i></a> <span class=" item_price">@item.DonGia VNĐ</span></h4>
+                                </div>
+                                <div class="srch">
+                                    <span>-50%</span>
+                                </div>
+                            </div>
                         </div>
-                        <div class="srch">
-                            <span>-50%</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-3 product-left">
-                    <div class="product-main simpleCart_shelfItem">
-                        <a href="single.html" class="mask"><img class="img-responsive zoom-img" src="~/Content/images/meo1.jpg" alt="" /></a>
-                        <div class="product-bottom">
-                            <h3> <a href="single.html" class="mask">Chó Shika</a></h3>
-                            <h4><a class="item_add" href="#"><i></i></a> <span class=" item_price">$ 329</span></h4>
-                        </div>
-                        <div class="srch">
-                            <span>-50%</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-3 product-left">
-                    <div class="product-main simpleCart_shelfItem">
-                        <a href="single.html" class="mask"><img class="img-responsive zoom-img" src="~/Content/images/meo2.jpg" alt="" /></a>
-                        <div class="product-bottom">
-                            <h3> <a href="single.html" class="mask">Mèo Mướp</a></h3>
-                            <h4><a class="item_add" href="#"><i></i></a> <span class=" item_price">$ 329</span></h4>
-                        </div>
-                        <div class="srch">
-                            <span>-50%</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-3 product-left">
-                    <div class="product-main simpleCart_shelfItem">
-                        <a href="single.html" class="mask"><img class="img-responsive zoom-img" src="~/Content/images/cho2.jpg" alt="" /></a>
-                        <div class="product-bottom">
-                            <h3> <a href="single.html" class="mask">Chó Lanta</a></h3>
-                            <h4><a class="item_add" href="#"><i></i></a> <span class=" item_price">$ 329</span></h4>
-                        </div>
-                        <div class="srch">
-                            <span>-50%</span>
-                        </div>
-                    </div>
-                </div>
+                    }
+                }
                 <div class="clearfix"></div>
-            </div>
-            <div class="product-one">
-                <div class="col-md-3 product-left">
-                    <div class="product-main simpleCart_shelfItem">
-                        <a href="single.html" class="mask"><img class="img-responsive zoom-img" src="~/Content/images/tho.jpg" alt="" /></a>
-                        <div class="product-bottom">
-                            <h3> <a href="single.html" class="mask">Thỏ Xám</a></h3>
-                            <h4><a class="item_add" href="#"><i></i></a> <span class=" item_price">$ 329</span></h4>
-                        </div>
-                        <div class="srch">
-                            <span>-50%</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-3 product-left">
-                    <div class="product-main simpleCart_shelfItem">
-                        <a href="single.html" class="mask"><img class="img-responsive zoom-img" src="~/Content/images/tho2.jpg" alt="" /></a>
-                        <div class="product-bottom">
-                            <h3> <a href="single.html" class="mask">Thỏ ISha</a> </h3>
-                            <h4><a class="item_add" href="#"><i></i></a> <span class=" item_price">$ 329</span></h4>
-                        </div>
-                        <div class="srch">
-                            <span>-50%</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-3 product-left">
-                    <div class="product-main simpleCart_shelfItem">
-                        <a href="single.html" class="mask"><img class="img-responsive zoom-img" src="~/Content/images/meo4.jpg" alt="" /></a>
-                        <div class="product-bottom">
-                            <h3> <a href="single.html" class="mask">Mèo Copa</a></h3>
-                            <h4><a class="item_add" href="#"><i></i></a> <span class=" item_price">$ 329</span></h4>
-                        </div>
-                        <div class="srch">
-                            <span>-50%</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-3 product-left">
-                    <div class="product-main simpleCart_shelfItem">
-                        <a href="single.html" class="mask"><img class="img-responsive zoom-img" src="~/Content/images/cho5.jpg" alt="" /></a>
-                        <div class="product-bottom">
-                            <h3> <a href="single.html" class="mask">Chó Phốc</a></h3>
-                            <h4><a class="item_add" href="#"><i></i></a> <span class=" item_price">$ 329</span></h4>
-                        </div>
-                        <div class="srch">
-                            <span>-50%</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="clearfix"></div>
+
             </div>
         </div>
     </div>
+
 </div>
 <!--product-end-->

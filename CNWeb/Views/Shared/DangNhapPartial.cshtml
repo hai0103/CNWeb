@@ -1,0 +1,45 @@
+﻿@using CNWeb.Models;
+
+@if (Session["Login"] != null)
+{
+    TaiKhoan taikhoan = (TaiKhoan)Session["Login"];
+    
+    <ul class="nav navbar-nav navbar-right">
+        <li>
+            @*@Html.ActionLink("Xin chào " + taikhoan.IdTaiKhoan + " !", "HoSoTK", "Trangchu", new { @IdTK = taikhoan.IdTaiKhoan })*@
+            <a href="@Url.Action("HoSoTK","Trangchu", new { @IdTK = taikhoan.IdTaiKhoan})">Xin chào @taikhoan.HoTen !</a>
+        </li>
+        <li><a href="@Url.Action("DangXuat","DangNhap")">Đăng xuất</a></li>
+    </ul>
+
+}
+else
+{
+    <ul class="nav navbar-nav navbar-right">
+        <li>@Html.ActionLink("Đăng ký", "DangKy", "DangNhap")</li>
+        <li>@Html.ActionLink("Đăng nhập", "DangNhap", "DangNhap")</li>
+    </ul>
+}
+
+<style>
+    .login-partial ul li a {
+        padding: 11px 0px 10px 0px;
+    }
+
+
+    .login-partial {
+        margin-left: 0px;
+        float: left;
+    }
+
+        .login-partial ul li a:hover {
+            background: #2783e0;
+        }
+
+        .login-partial ul li a {
+            padding: 5px 10px 5px 10px;
+            color: white;
+            font-size: 18px;
+        }
+</style>
+

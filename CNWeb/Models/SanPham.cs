@@ -26,6 +26,7 @@ namespace CNWeb.Models
 
         public int? SoLuong { get; set; }
 
+        [DataType(DataType.Currency)]
         public decimal? DonGia { get; set; }
 
         [Column(TypeName = "ntext")]
