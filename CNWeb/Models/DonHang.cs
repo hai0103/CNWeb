@@ -12,7 +12,7 @@ namespace CNWeb.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public DonHang()
         {
-            ChitietDonHangs = new HashSet<ChitietDonHang>();
+            ChiTietDonHangs = new HashSet<ChiTietDonHang>();
         }
 
         [Key]
@@ -26,11 +26,17 @@ namespace CNWeb.Models
 
         public int? UuDai { get; set; }
 
+        public int? MaTK { get; set; }
+
         public int? MaKH { get; set; }
 
         public bool? DaXoa { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<ChitietDonHang> ChitietDonHangs { get; set; }
+        public virtual ICollection<ChiTietDonHang> ChiTietDonHangs { get; set; }
+
+        public virtual KhachHang KhachHang { get; set; }
+
+        public virtual TaiKhoan TaiKhoan { get; set; }
     }
 }

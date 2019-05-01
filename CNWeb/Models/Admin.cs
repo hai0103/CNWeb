@@ -9,8 +9,7 @@ namespace CNWeb.Models
     [Table("Admin")]
     public partial class Admin
     {
-        [Key]
-        public int IDAdmin { get; set; }
+        public int ID { get; set; }
 
         [StringLength(250)]
         public string TaiKhoan { get; set; }
@@ -26,8 +25,5 @@ namespace CNWeb.Models
 
         [StringLength(10)]
         public string SDT { get; set; }
-
-        [StringLength(250)]
-        public string DiaChi { get; set; }
     }
 }

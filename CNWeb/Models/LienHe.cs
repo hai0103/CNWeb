@@ -9,10 +9,12 @@ namespace CNWeb.Models
     [Table("LienHe")]
     public partial class LienHe
     {
-        [Key]
-        public int IdLienHe { get; set; }
+        public int ID { get; set; }
 
-        [StringLength(50)]
+        [StringLength(250)]
+        public string HoTen { get; set; }
+
+        [StringLength(250)]
         public string Email { get; set; }
 
         [Column(TypeName = "ntext")]

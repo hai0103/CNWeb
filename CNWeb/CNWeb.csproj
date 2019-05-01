@@ -52,6 +52,12 @@
       <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="PagedList, Version=1.17.0.0, Culture=neutral, PublicKeyToken=abbb863e9397c5e1, processorArchitecture=MSIL">
+      <HintPath>..\packages\PagedList.1.17.0.0\lib\net40\PagedList.dll</HintPath>
+    </Reference>
+    <Reference Include="PagedList.Mvc, Version=4.5.0.0, Culture=neutral, PublicKeyToken=abbb863e9397c5e1, processorArchitecture=MSIL">
+      <HintPath>..\packages\PagedList.Mvc.4.5.0.0\lib\net40\PagedList.Mvc.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
@@ -134,24 +140,75 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
+    <Compile Include="Areas\Admin\Controllers\HomeController.cs" />
+    <Compile Include="Areas\Admin\Controllers\QuanLiSanPhamController.cs" />
     <Compile Include="Controllers\TrangchuController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\Admin.cs" />
-    <Compile Include="Models\ChitietDonHang.cs" />
+    <Compile Include="Models\ChiTietDonHang.cs" />
     <Compile Include="Models\DonHang.cs" />
     <Compile Include="Models\KhachHang.cs" />
     <Compile Include="Models\LienHe.cs" />
     <Compile Include="Models\LoaiSanPham.cs" />
-    <Compile Include="Models\OnlineShop.cs" />
+    <Compile Include="Models\OnlineShopDbContext.cs" />
     <Compile Include="Models\SanPham.cs" />
-    <Compile Include="Models\sysdiagram.cs" />
     <Compile Include="Models\TaiKhoan.cs" />
     <Compile Include="Models\TinTuc.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\Admin\css\bar.css" />
+    <Content Include="Content\Admin\css\bootstrap.css" />
+    <Content Include="Content\Admin\css\fontawesome-all.css" />
+    <Content Include="Content\Admin\css\pignose.calender.css" />
+    <Content Include="Content\Admin\css\simplyCountdown.css" />
+    <Content Include="Content\Admin\css\style.css" />
+    <Content Include="Content\Admin\css\style4.css" />
+    <Content Include="Content\Admin\css\widgets.css" />
+    <Content Include="Content\Admin\images\1.jpg" />
+    <Content Include="Content\Admin\images\2.jpg" />
+    <Content Include="Content\Admin\images\3.jpg" />
+    <Content Include="Content\Admin\images\4.jpg" />
+    <Content Include="Content\Admin\images\5.jpg" />
+    <Content Include="Content\Admin\images\b1.jpg" />
+    <Content Include="Content\Admin\images\ban1.jpg" />
+    <Content Include="Content\Admin\images\ban2.jpg" />
+    <Content Include="Content\Admin\images\ban3.jpg" />
+    <Content Include="Content\Admin\images\ban4.jpg" />
+    <Content Include="Content\Admin\images\ban5.jpg" />
+    <Content Include="Content\Admin\images\ban6.jpg" />
+    <Content Include="Content\Admin\images\c1.jpg" />
+    <Content Include="Content\Admin\images\c2.jpg" />
+    <Content Include="Content\Admin\images\c3.jpg" />
+    <Content Include="Content\Admin\images\c4.jpg" />
+    <Content Include="Content\Admin\images\clone.jpg" />
+    <Content Include="Content\Admin\images\menu1.jpg" />
+    <Content Include="Content\Admin\images\Preloader_2.gif" />
+    <Content Include="Content\Admin\images\profile.jpg" />
+    <Content Include="Content\Admin\images\timer.jpg" />
+    <Content Include="Content\Admin\js\amcharts.js" />
+    <Content Include="Content\Admin\js\bootstrap.min.js" />
+    <Content Include="Content\Admin\js\chart1.js" />
+    <Content Include="Content\Admin\js\circle_bar.js" />
+    <Content Include="Content\Admin\js\example.js" />
+    <Content Include="Content\Admin\js\index.js" />
+    <Content Include="Content\Admin\js\jquery-2.2.3.min.js" />
+    <Content Include="Content\Admin\js\jquery.charts.js" />
+    <Content Include="Content\Admin\js\kuma-gauge.jquery.js" />
+    <Content Include="Content\Admin\js\modernizr.js" />
+    <Content Include="Content\Admin\js\moment.min.js" />
+    <Content Include="Content\Admin\js\percentage-circles.js" />
+    <Content Include="Content\Admin\js\pignose.calender.js" />
+    <Content Include="Content\Admin\js\prettymaps.js" />
+    <Content Include="Content\Admin\js\raphael-min.js" />
+    <Content Include="Content\Admin\js\rumcaJS.js" />
+    <Content Include="Content\Admin\js\script.js" />
+    <Content Include="Content\Admin\js\SimpleChart.js" />
+    <Content Include="Content\Admin\js\simplyCountdown.js" />
+    <Content Include="Content\Admin\js\skycons.js" />
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
@@ -195,10 +252,27 @@
     <Content Include="Content\js\memenu.js" />
     <Content Include="Content\js\responsiveslides.min.js" />
     <Content Include="Content\js\simpleCart.min.js" />
+    <Content Include="Content\PagedList.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="Images\13.jpg" />
+    <Content Include="Images\category2.png" />
+    <Content Include="Images\cho1.jpg" />
+    <Content Include="Images\cho2.jpg" />
+    <Content Include="Images\cho3.jpg" />
+    <Content Include="Images\cho4.jpg" />
+    <Content Include="Images\cho5.jpg" />
+    <Content Include="Images\meo1.jpg" />
+    <Content Include="Images\meo2.jpg" />
+    <Content Include="Images\meo4.jpg" />
+    <Content Include="Images\meo5.jpg" />
+    <Content Include="Images\prod11.jpg" />
+    <Content Include="Images\tho.jpg" />
+    <Content Include="Images\tho2.jpg" />
+    <Content Include="Images\tho3.jpg" />
+    <Content Include="Images\topProd1.jpg" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Content\fonts\BreeSerif-Regular.ttf" />
@@ -206,6 +280,27 @@
     <Content Include="Content\fonts\Lora-Regular.ttf" />
     <Content Include="Content\fonts\Muli-Regular.ttf" />
     <Content Include="Content\fonts\Philosopher-Regular.ttf" />
+    <Content Include="Content\Admin\images\Thumbs.db" />
+    <Content Include="Content\Admin\webfonts\fa-brands-400.eot" />
+    <Content Include="Content\Admin\webfonts\fa-brands-400.svg" />
+    <Content Include="Content\Admin\webfonts\fa-brands-400.ttf" />
+    <Content Include="Content\Admin\webfonts\fa-brands-400.woff" />
+    <Content Include="Content\Admin\webfonts\fa-brands-400.woff2" />
+    <Content Include="Content\Admin\webfonts\fa-regular-400.eot" />
+    <Content Include="Content\Admin\webfonts\fa-regular-400.svg" />
+    <Content Include="Content\Admin\webfonts\fa-regular-400.ttf" />
+    <Content Include="Content\Admin\webfonts\fa-regular-400.woff" />
+    <Content Include="Content\Admin\webfonts\fa-regular-400.woff2" />
+    <Content Include="Content\Admin\webfonts\fa-solid-900.eot" />
+    <Content Include="Content\Admin\webfonts\fa-solid-900.svg" />
+    <Content Include="Content\Admin\webfonts\fa-solid-900.ttf" />
+    <Content Include="Content\Admin\webfonts\fa-solid-900.woff" />
+    <Content Include="Content\Admin\webfonts\fa-solid-900.woff2" />
+    <Content Include="Areas\Admin\Views\web.config" />
+    <Content Include="Areas\Admin\Views\QuanLiSanPham\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\QuanLiSanPham\Create.cshtml" />
+    <Content Include="Areas\Admin\Views\QuanLiSanPham\Delete.cshtml" />
+    <Content Include="Areas\Admin\Views\QuanLiSanPham\Edit.cshtml" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
     <Content Include="Scripts\jquery-3.3.1.min.js" />
@@ -229,7 +324,6 @@
     <Content Include="Views\Web.config" />
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
-    <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Shared\_ShopLayout.cshtml" />
     <Content Include="Views\Trangchu\Index.cshtml" />
     <Content Include="Views\Trangchu\Contact.cshtml" />
@@ -237,9 +331,13 @@
     <Content Include="Views\Trangchu\Products.cshtml" />
     <Content Include="Views\Shared\BreadcrumbsPartial.cshtml" />
     <Content Include="Views\Trangchu\Introduce.cshtml" />
+    <Content Include="Views\Shared\_AdminLayout.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Areas\Admin\Models\" />
+    <Folder Include="Areas\Admin\Views\Home\" />
+    <Folder Include="Areas\Admin\Views\Shared\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />

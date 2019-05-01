@@ -1,0 +1,85 @@
+﻿@using PagedList.Mvc;
+@using PagedList;
+@model PagedList.PagedList<CNWeb.Models.SanPham>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h4>Danh sách sản phẩm</h4>
+
+<button class="btn btn-primary">
+    
+    @Html.ActionLink("Thêm mới", "Create")
+</button>
+<table class="table">
+    <tr>
+
+        <th>
+            @Html.DisplayNameFor(model => model.First().TenSanPham)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.First().SoLuong)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.First().DonGia)
+        </th>
+        <th>
+
+            @Html.DisplayNameFor(model => model.First().HinhAnh)
+        </th>       
+        <th>
+            @Html.DisplayNameFor(model => model.First().MaLoai)
+        </th>
+        <th>#</th>
+        <th>#</th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.TenSanPham)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.SoLuong)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DonGia)
+        </td>
+        <td>
+            <img src="@Url.Content("/Images/" +item.HinhAnh)" width="120px" height="120px"/>
+        </td>
+        <td >
+            @Html.DisplayFor(modelItem => item.LoaiSanPham.TenLoai)
+        </td>
+        <td>
+            @Html.ActionLink("Cập nhật", "Edit", new { @id=item.IDSanPham }) 
+        </td>
+        <td>
+            @Html.ActionLink("Xóa", "Delete", new { @id=item.IDSanPham })
+        </td>
+    </tr>
+}
+
+</table>
+<div class="menuPage">
+    @Html.PagedListPager(Model,page => Url.Action("Index",new { page=page}))
+</div>
+
+
+<style>
+    .btn, .btn-primary {
+        margin-top: 25px;
+        margin-bottom: 10px;
+    }
+    .pagination > li.active {
+        padding: 5px 10px;
+        background-color: #858592;
+    }
+    .pagination > li {
+        padding: 5px 10px;
+        background-color: #cabfbf;
+        border: 0.5px solid;
+        margin-left: 3px;
+</style>

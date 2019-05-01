@@ -9,13 +9,13 @@ namespace CNWeb.Models
     [Table("TinTuc")]
     public partial class TinTuc
     {
-        [Key]
-        public int IDTinTuc { get; set; }
+        public int ID { get; set; }
+
+        public string TieuDe { get; set; }
 
         public DateTime? NgayDang { get; set; }
 
-        [StringLength(250)]
-        public string TieuDe { get; set; }
+        public string TomTat { get; set; }
 
         [StringLength(250)]
         public string HinhAnh { get; set; }

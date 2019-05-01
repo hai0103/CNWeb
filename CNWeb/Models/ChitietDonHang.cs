@@ -6,19 +6,19 @@ namespace CNWeb.Models
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Data.Entity.Spatial;
 
-    [Table("ChitietDonHang")]
-    public partial class ChitietDonHang
+    [Table("ChiTietDonHang")]
+    public partial class ChiTietDonHang
     {
-        [Key]
-        public int IDChiTietDH { get; set; }
+        public int ID { get; set; }
 
-        public int? IDSanPham { get; set; }
+        public int? MaDH { get; set; }
 
-        public int? IDDonHang { get; set; }
+        public int? MaSanPham { get; set; }
 
         public int? SoLuong { get; set; }
 
-        public decimal? DonGia { get; set; }
+        [StringLength(10)]
+        public string DonGia { get; set; }
 
         public virtual DonHang DonHang { get; set; }
 

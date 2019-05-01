@@ -12,14 +12,15 @@ namespace CNWeb.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public TaiKhoan()
         {
+            DonHangs = new HashSet<DonHang>();
             KhachHangs = new HashSet<KhachHang>();
         }
 
         [Key]
-        public int IdTaiKhoan { get; set; }
+        public int IDTaiKhoan { get; set; }
 
         [Column("TaiKhoan")]
-        [StringLength(250)]
+        [StringLength(50)]
         public string TaiKhoan1 { get; set; }
 
         [StringLength(50)]
@@ -28,7 +29,7 @@ namespace CNWeb.Models
         [StringLength(250)]
         public string HoTen { get; set; }
 
-        [StringLength(250)]
+        [StringLength(10)]
         public string Email { get; set; }
 
         [StringLength(10)]
@@ -37,7 +38,10 @@ namespace CNWeb.Models
         [StringLength(250)]
         public string DiaChi { get; set; }
 
-        public DateTime? NgayTao { get; set; }
+        public bool? DaXoa { get; set; }
+
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<DonHang> DonHangs { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<KhachHang> KhachHangs { get; set; }
