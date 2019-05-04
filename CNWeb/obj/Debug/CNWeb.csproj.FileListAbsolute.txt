@@ -138,6 +138,8 @@ C:\Users\Admin\CNWeb\CNWeb\bin\Microsoft.AspNet.TelemetryCorrelation.dll
 C:\Users\Admin\CNWeb\CNWeb\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
 C:\Users\Admin\CNWeb\CNWeb\bin\Microsoft.Web.Infrastructure.dll
 C:\Users\Admin\CNWeb\CNWeb\bin\Newtonsoft.Json.dll
+C:\Users\Admin\CNWeb\CNWeb\bin\PagedList.dll
+C:\Users\Admin\CNWeb\CNWeb\bin\PagedList.Mvc.dll
 C:\Users\Admin\CNWeb\CNWeb\bin\System.Diagnostics.DiagnosticSource.dll
 C:\Users\Admin\CNWeb\CNWeb\bin\System.Web.Helpers.dll
 C:\Users\Admin\CNWeb\CNWeb\bin\System.Web.Mvc.dll
@@ -149,6 +151,8 @@ C:\Users\Admin\CNWeb\CNWeb\bin\System.Web.WebPages.Razor.dll
 C:\Users\Admin\CNWeb\CNWeb\bin\WebGrease.dll
 C:\Users\Admin\CNWeb\CNWeb\bin\EntityFramework.xml
 C:\Users\Admin\CNWeb\CNWeb\bin\EntityFramework.SqlServer.xml
+C:\Users\Admin\CNWeb\CNWeb\bin\PagedList.xml
+C:\Users\Admin\CNWeb\CNWeb\bin\PagedList.Mvc.xml
 C:\Users\Admin\CNWeb\CNWeb\bin\System.Web.Helpers.xml
 C:\Users\Admin\CNWeb\CNWeb\bin\System.Web.Mvc.xml
 C:\Users\Admin\CNWeb\CNWeb\bin\System.Web.Optimization.xml
@@ -165,8 +169,3 @@ C:\Users\Admin\CNWeb\CNWeb\obj\Debug\CNWeb.csproj.CoreCompileInputs.cache
 C:\Users\Admin\CNWeb\CNWeb\obj\Debug\CNWeb.csproj.CopyComplete
 C:\Users\Admin\CNWeb\CNWeb\obj\Debug\CNWeb.dll
 C:\Users\Admin\CNWeb\CNWeb\obj\Debug\CNWeb.pdb
-C:\Users\Admin\CNWeb\CNWeb\bin\PagedList.dll
-C:\Users\Admin\CNWeb\CNWeb\bin\PagedList.Mvc.dll
-C:\Users\Admin\CNWeb\CNWeb\bin\PagedList.xml
-C:\Users\Admin\CNWeb\CNWeb\bin\PagedList.Mvc.xml
-C:\Users\Admin\CNWeb\CNWeb\obj\Debug\CNWeb.csprojAssemblyReference.cache

@@ -1,4 +1,4 @@
-namespace CNWeb.Models
+﻿namespace CNWeb.Models
 {
     using System;
     using System.Collections.Generic;
@@ -12,32 +12,42 @@ namespace CNWeb.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public SanPham()
         {
-            ChitietDonHangs = new HashSet<ChitietDonHang>();
+            ChiTietDonHangs = new HashSet<ChiTietDonHang>();
         }
 
         [Key]
         public int IDSanPham { get; set; }
 
         [StringLength(250)]
+        [Display(Name = "Tên sản phẩm")]
+        [Required(ErrorMessage ="Bạn chưa nhập tên sản phẩm")]
         public string TenSanPham { get; set; }
 
-        [StringLength(250)]
-        public string HinhAnh { get; set; }
-
+        [Display(Name = "Số lượng")]
+        [Required(ErrorMessage = "Bạn chưa nhập số lượng")]
         public int? SoLuong { get; set; }
 
-        [DataType(DataType.Currency)]
+        [Display(Name = "Đơn giá")]
+        [Required(ErrorMessage = "Bạn chưa nhập đơn giá")]
         public decimal? DonGia { get; set; }
 
         [Column(TypeName = "ntext")]
+        [Display(Name = "Mô tả")]
         public string MoTa { get; set; }
 
+        [StringLength(50)]
+        [Display(Name = "Hình ảnh")]
+        [Required(ErrorMessage = "Bạn chưa chọn ảnh")]
+        public string HinhAnh { get; set; }
+
+        [Display(Name = "Đã xóa")]
         public bool? DaXoa { get; set; }
 
-        public int? IDLoaiSanPham { get; set; }
+        [Display(Name = "Loại thú")]
+        public int? MaLoai { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<ChitietDonHang> ChitietDonHangs { get; set; }
+        public virtual ICollection<ChiTietDonHang> ChiTietDonHangs { get; set; }
 
         public virtual LoaiSanPham LoaiSanPham { get; set; }
     }

@@ -1,0 +1,96 @@
+﻿@using PagedList;
+@using PagedList.Mvc;
+@model PagedList.PagedList<CNWeb.Models.DonHang>
+
+@{
+    ViewBag.Title = "HDChuaGiao";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h3>Đơn hàng chưa giao</h3>
+<br /><br />
+
+<table class="table table-bordered">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.First().IDDonHang)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.First().NgayDat)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.First().TinhTrangGiao)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.First().NgayGiao)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.First().UuDai)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.First().MaTK)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.First().DaXoa)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.IDDonHang)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.NgayDat)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TinhTrangGiao)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.NgayGiao)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.UuDai)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TaiKhoan.HoTen)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DaXoa)
+        </td>
+        <td>
+            @Html.ActionLink("Duyệt đơn hàng", "DuyetDon", new { @id = item.IDDonHang }) 
+        </td>
+    </tr>
+}
+</table>
+
+@Html.PagedListPager(Model,Page=>Url.Action("HDChuaGiao",new { Page = Page}) )
+
+<style>
+    .pagination > li.active {
+        padding: 5px 10px;
+        background-color: #858592;
+    }
+
+    .pagination > li {
+        padding: 5px 10px;
+        background-color: #cabfbf;
+        border: 0.5px solid;
+        margin-left: 3px;
+    }
+    .table th {
+        color: #fff;
+        font-size: 15px;
+        background-color: green;
+    }
+
+    .table th, .table td {
+        padding: 0.74rem;
+        vertical-align: top;
+        border-top: 1px solid #dee2e6;
+        text-align: center;
+        font-size: 13px;
+    }
+</style>

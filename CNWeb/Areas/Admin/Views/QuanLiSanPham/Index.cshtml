@@ -1,0 +1,105 @@
+﻿5@using PagedList;
+@using PagedList.Mvc;
+@model PagedList.PagedList<CNWeb.Models.SanPham>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h3>Danh sách sản phẩm</h3>
+<br /><br />
+<button class="btn btn-primary">
+
+    @Html.ActionLink("Thêm mới", "Create")
+</button>
+<table class="table table-bordered">
+    <tr>
+
+        <th>
+            @Html.DisplayNameFor(model => model.First().TenSanPham)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.First().SoLuong)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.First().DonGia)
+        </th>
+        <th>
+
+            @Html.DisplayNameFor(model => model.First().HinhAnh)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.First().MaLoai)
+        </th>
+        <th>#</th>
+        <th>#</th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr id="@Url.Content("row"+item.IDSanPham)">
+            <td>
+                @Html.DisplayFor(modelItem => item.TenSanPham)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SoLuong)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem =>item.DonGia)
+            </td>
+            <td>
+                <img src="@Url.Content("/Images/" +item.HinhAnh)" width="120px" height="120px" />
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.LoaiSanPham.TenLoai)
+            </td>
+            <td>
+                @Html.ActionLink("Cập nhật", "Edit", new { @id = item.IDSanPham })
+            </td>
+            <td>
+                @Ajax.ActionLink("Xóa","Delete",new { @id=item.IDSanPham },
+                            new AjaxOptions { HttpMethod="Delete",Confirm="Bạn có chắc chắn xóa sản phẩm này",OnComplete=Url.Content("$('#row"+item.IDSanPham+"').remove();")}
+                )
+            </td>
+        </tr>
+    }
+
+</table>
+<div class="menuPage">
+    @Html.PagedListPager(Model, Page => Url.Action("index", new { Page = Page }))
+</div>
+
+
+<style>
+    .btn, .btn-primary {
+        margin-top: 25px;
+        margin-bottom: 10px;
+    }
+
+    .pagination > li.active {
+        padding: 5px 10px;
+        background-color: #858592;
+    }
+
+    .pagination > li {
+        padding: 5px 10px;
+        background-color: #cabfbf;
+        border: 0.5px solid;
+        margin-left: 3px;
+    }
+
+    .table th {
+        color: #fff;
+        font-size: 15px;
+        background-color: green;
+    }
+
+    .table th, .table td {
+        padding: 0.74rem;
+        vertical-align: top;
+        border-top: 1px solid #dee2e6;
+        text-align: center;
+        font-size: 13px;
+    }
+</style>

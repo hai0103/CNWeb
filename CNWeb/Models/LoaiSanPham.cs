@@ -15,10 +15,9 @@ namespace CNWeb.Models
             SanPhams = new HashSet<SanPham>();
         }
 
-        [Key]
-        public int IDLoaiSanPham { get; set; }
+        public int ID { get; set; }
 
-        [StringLength(250)]
+        [StringLength(50)]
         public string TenLoai { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

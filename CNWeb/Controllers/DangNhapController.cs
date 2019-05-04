@@ -10,7 +10,7 @@ namespace CNWeb.Controllers
 {
     public class DangNhapController : Controller
     {
-        OnlineShop db = new OnlineShop();
+        OnlineShopDbConText db = new OnlineShopDbConText();
         //  DangNhap
         public ActionResult DangNhap()
         {
@@ -18,11 +18,13 @@ namespace CNWeb.Controllers
         }
 
         [HttpPost]
-        public ActionResult DangNhap (TaiKhoan taikhoan)
+        public ActionResult DangNhap (FormCollection f)
         {
+            Account taikhoan = new Account();
+            
             string tk = Request.Form["tk"];
             string mk = Request.Form["mk"];
-            taikhoan = db.TaiKhoans.SingleOrDefault(t => t.TaiKhoan1 == tk && t.MatKhau.Trim() == mk);
+            taikhoan = db.Accounts.SingleOrDefault(t => t.TaiKhoan == tk && t.MatKhau.Trim() == mk);
             if(taikhoan != null)
             {
                 ViewBag.message = "Đăng nhập thành công";
@@ -32,22 +34,22 @@ namespace CNWeb.Controllers
             ViewBag.message = "Đăng nhập thất bại";
             return View();
         }
-
+        
 
         public ActionResult DangKy()
         {
             return View();
         }
         [HttpPost]
-        public ActionResult DangKy(TaiKhoan taikhoan)
+        public ActionResult DangKy(Account taikhoan)
         {
             taikhoan.HoTen = Request.Form["hotenDK"];
             taikhoan.Email = Request.Form["emailDK"];
             taikhoan.SDT = Request.Form["sdtDK"];
             taikhoan.DiaChi = Request.Form["diachiDK"];
-            taikhoan.TaiKhoan1 = Request.Form["tkDK"];
+            taikhoan.TaiKhoan = Request.Form["tkDK"];
             taikhoan.MatKhau = Request.Form["mkDK"];
-            db.TaiKhoans.Add(taikhoan);
+            db.Accounts.Add(taikhoan);
             db.SaveChanges();
             return RedirectToAction("DangNhap","DangNhap");
         }

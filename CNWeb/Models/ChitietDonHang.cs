@@ -1,4 +1,4 @@
-namespace CNWeb.Models
+﻿namespace CNWeb.Models
 {
     using System;
     using System.Collections.Generic;
@@ -6,18 +6,21 @@ namespace CNWeb.Models
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Data.Entity.Spatial;
 
-    [Table("ChitietDonHang")]
-    public partial class ChitietDonHang
+    [Table("ChiTietDonHang")]
+    public partial class ChiTietDonHang
     {
-        [Key]
-        public int IDChiTietDH { get; set; }
+        public int ID { get; set; }
 
-        public int? IDSanPham { get; set; }
+        [Display(Name = "Mã đơn hàng")]
+        public int? MaDH { get; set; }
 
-        public int? IDDonHang { get; set; }
+        [Display(Name = "Mã sản phẩm")]
+        public int? MaSanPham { get; set; }
 
+        [Display(Name = "Số lượng")]
         public int? SoLuong { get; set; }
 
+        [Display(Name = "Đơn giá")]
         public decimal? DonGia { get; set; }
 
         public virtual DonHang DonHang { get; set; }

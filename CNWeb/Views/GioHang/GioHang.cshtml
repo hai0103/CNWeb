@@ -1,0 +1,204 @@
+﻿@using CNWeb.Models
+@model List<Item_GioHang>
+@{
+    ViewBag.Title = "GioHang";
+    Layout = "~/Views/Shared/_ShopLayout.cshtml";
+}
+
+@{ 
+    
+    var thanhtien = 0;
+    var tongsp = ViewBag.TongSL;
+}
+
+
+<div class="container">
+    <div class="row cart-row">
+        <div class="col-md-12 cart-to">
+            <h5 class="cart-total">
+                Giỏ hàng <span>(@tongsp sản phẩm)</span>
+            </h5>
+        </div>
+        
+        <div class="col-md-8 cart-col-1">
+            <div class="cart-tieude">
+                <div class="cart-tensp">Sản phẩm</div>
+                <div class="cart-giasp">Đơn giá</div>
+                <div class="cart-slsp">Số lượng</div>
+            </div>
+            <form id="cart-content">
+                @{
+                    OnlineShopDbConText db = new OnlineShopDbConText();
+                    foreach (var item in Model)
+                    {
+                        SanPham hihi = db.SanPhams.SingleOrDefault(s => s.IDSanPham == item.MaSP);
+                        var slMax = hihi.SoLuong;
+                <div class="row cart-item">
+                    <div class="col-md-3 cart-item-img"><img class="img-responsive" src="@Url.Content("/Images/"+item.HinhAnh)" alt="" /></div>
+                    <div class="col-md-9 col-right">
+                        <div class="info-product">
+                            <div class="name">@item.TenSP</div>
+                            <div class="action-delete">@Html.ActionLink("Xóa","XoaItemGioHang", new {@IDSanPham = item.MaSP })</div>
+                        </div>
+                        <div class="price-product">@item.DonGia</div>
+                        <input class="quantity-product" data-id="@item.MaSP" type="number" min="1" max="@slMax" value="@item.SoLuong"></input>
+                    </div>
+                </div>
+                        thanhtien += (int)item.TongTien;
+                }
+                }
+            </form>
+        </div>
+        <div class="col-md-4 cart-col-2 ">
+            <div id="cart-pay">
+                <div class="thanhtien">Thành tiền:   @thanhtien VND</div>
+                <button type="button" class="btn btn-large btn-block btn-danger btn-checkout" >@Html.ActionLink("Thanh toán", "TinhTien", "GioHang") </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+
+    .row.cart-row {
+        margin-top: 10px;
+        border-bottom: solid 2px gray;
+        padding-bottom: 30px;
+    }
+    .cart-total {
+        font-size: 18px;
+    }
+    .cart-total span {
+        font-size: 15px;
+    }
+    .col-md-12.cart-to {
+        margin: 15px 2px;
+        border-bottom: solid 2px gray;
+    }
+    .info-product {
+        float: left;
+        width: 45%;
+    }
+
+    .col-md-9.col-right {
+    }
+
+    .price-product {
+        float: left;
+        width: 28%;
+    }
+
+    .quantity-product {
+        float: left;
+        width: 10%;
+    }
+
+    .cart-tieude {
+        margin-bottom: 35px;
+        letter-spacing: 1.2px;
+        font-size: 16px;
+    }
+
+    .row.cart-item {
+        margin-top: 10px;
+        padding: 6px 2px;
+        border: solid 1px #f1f1f1;
+    }
+    
+    .cart-tensp {
+        float: left;
+        width: 60%;
+        padding-left: 60px;
+    }
+    .cart-giasp {
+        float: left;
+        width: 20%;
+    }
+    .cart-slsp {
+        float: left;
+    }
+    #cart-pay {
+        width: 70%;
+        margin-top: 30px;
+        margin-left: 15px;
+    }
+    .col-md-9.col-right {
+        margin-top: 10px;
+    }
+
+
+    .form-control.quantity-product {
+        width: 45px;
+    }
+
+    .input-group {
+        display: inline-flex;
+    }
+
+    .input-group-prepend {
+    }
+
+        .input-group-prepend .btn.btn-decrement.btn-outline-secondary {
+            background: #d0edff;
+        }
+
+    .input-group-append {
+    }
+
+        .input-group-append .btn.btn-increment.btn-outline-secondary {
+            background: #d0edff;
+        }
+    .form-control.quantity-product {
+        border: none;
+        background: #fefefe;
+    }
+    .thanhtien {
+        margin-bottom: 25px;
+        font-size: 20px;
+    }
+    .btn.btn-large.btn-block.btn-danger.btn-checkout a {
+        text-decoration: none;
+        color: white;
+        font-size: 24px;
+
+    }
+
+    .input-group-prepend .btn.btn-decrement.btn-outline-secondary:hover {
+        background: gainsboro;
+    }
+
+    .input-group-append .btn.btn-increment.btn-outline-secondary:hover {
+        background: gainsboro;
+    }
+    .action-delete a {
+        text-decoration: none;
+        font-size: 15px;
+    }
+    .info-product .name {
+        font-size: 18px;
+    }
+</style>
+<script src="~/Content/js/bootstrap-input-spinner.js"></script>
+
+<script>
+    $("input[type='number']").inputSpinner()
+    function updateCart(masp,soluongmoi) {
+            $.ajax({
+                type: 'POST',
+                data: { IDSanPham: masp, SL: soluongmoi },
+                url: '@Url.Action("CapNhatItemGioHang","GioHang")',
+                success: function () {
+                    location.reload();
+                }
+            });
+         }
+
+    $(function () {
+        $('.quantity-product').change(function () {
+            var soluongmoi = $(this).val();
+            var masp = $(this).data('id');
+            console.log(soluongmoi + ' masp:' + masp);
+            updateCart(masp, soluongmoi);
+        })
+    });
+</script>

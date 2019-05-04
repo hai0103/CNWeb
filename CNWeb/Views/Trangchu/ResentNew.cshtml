@@ -7,10 +7,10 @@
     {
         <div class="news-new-one">
             <div class="news-new-img">
-                <a href="@Url.Action("NewsDetail","Trangchu", new { @IdNew = item.IDTinTuc})"><img src="@Url.Content(item.HinhAnh)" alt=""></a>
+                <a href="@Url.Action("NewsDetail","Trangchu", new { @IdNew = item.ID})"><img src="@Url.Content("/Images/"+item.HinhAnh)" alt=""></a>
             </div>
             <div class="news-new-cont">
-                <h4><a href="@Url.Action("NewsDetail","Trangchu", new { @IdNew = item.IDTinTuc})">@item.TieuDe</a></h4>
+                <h4><a href="@Url.Action("NewsDetail","Trangchu", new { @IdNew = item.ID})">@item.TieuDe</a></h4>
                 <span>@item.NgayDang</span>
             </div>
         </div>

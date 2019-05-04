@@ -1,4 +1,4 @@
-namespace CNWeb.Models
+﻿namespace CNWeb.Models
 {
     using System;
     using System.Collections.Generic;
@@ -9,13 +9,17 @@ namespace CNWeb.Models
     [Table("LienHe")]
     public partial class LienHe
     {
-        [Key]
-        public int IdLienHe { get; set; }
+        public int ID { get; set; }
+        [Display(Name = "Họ tên")]
+        [StringLength(250)]
+        public string HoTen { get; set; }
 
-        [StringLength(50)]
+        [Display(Name = "Email")]
+        [StringLength(250)]
         public string Email { get; set; }
 
         [Column(TypeName = "ntext")]
+        [Display(Name = "Nội dung")]
         public string NoiDung { get; set; }
     }
 }

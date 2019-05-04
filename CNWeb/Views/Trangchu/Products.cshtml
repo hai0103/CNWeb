@@ -21,6 +21,13 @@
             </div>
             <div class="col-md-3 prdt-right">
                 <div class="w_sidebar">
+                    <section class="header-right ">
+                        <div class="search-bar">
+                            <input class="txtS" type="text" value="Tìm kiếm" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Tìm kiếm';}">
+                            <input class="smS" type="submit" value="">
+                        </div>
+                    </section>
+                    <div class="clearfix"> </div>
                     <section class="sky-form">
                         <h4>Danh mục sản phẩm</h4>
                         <div class="row1 scroll-pane">
@@ -37,17 +44,17 @@
                     <section class="sky-form">
                         <h4>Loại thú cưng</h4>
                         <div class="row1 row2 scroll-pane">
-                            
+
                             <div class="col col-4">
                                 <ul>
-                                    <label data-id="null" class="checkbox listCate"><input type="checkbox" name="checkbox"><i></i>Tất cả</label>
+                                    <label data-id="null" class="checkbox listCate"><input type="radio" name="checkbox"><i></i>Tất cả</label>
                                     @foreach (var item in Model)
                                     {
-                                        <label data-id="@item.IDLoaiSanPham" class="checkbox listCate"><input type="checkbox" name="checkbox"><i></i>@item.TenLoai</label>
+                                        <label data-id="@item.ID" class="checkbox listCate"><input type="radio" name="checkbox"><i></i>@item.TenLoai</label>
                                         @*<li data-id="@item.IDLoaiSanPham" class="listCate"><a href="">@item.TenLoai</a></li>*@
                                     }
 
-</div>
+                            </div>
                             </ul>
 
                         </div>
@@ -69,12 +76,10 @@
             dataType: 'html',
             success: function (data) {
                 $('.SPcontent').html(data);
-
             }
         });
     }
     $(function () {
-
         loadData(null, null);//null do click thì mới lấy categoryOfProductID
         $('.listCate').click(function () {
             var maloai = $(this).data('id');
@@ -82,4 +87,23 @@
         })
     });
 
+    @*function loadDataSearch(strS) {
+        $.ajax({
+            type: 'GET',
+            data: { strSearch: strS },
+            url '@Url.Action("listProductSearch","Trangchu")',
+            dataType: 'html',
+            success: function (data) {
+                $('SP.content').html(data);
+            }
+        });
+    }
+    $(function () {
+        loadDataSearch(null);
+        $('.smS').submit(function () {
+            var strS = $('.txtS').val();
+            console.log(strS);
+            loadDataSearch(strS);
+        })
+    });*@
 </script>

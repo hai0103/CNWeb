@@ -13,7 +13,7 @@ namespace CNWeb.Controllers
     
     public class TrangchuController : Controller
     {
-        OnlineShop db = new OnlineShop();
+        OnlineShopDbConText db = new OnlineShopDbConText();
         // GET: Trangchu
         public ActionResult Index()
         {
@@ -25,14 +25,17 @@ namespace CNWeb.Controllers
             return View();
         }
         [HttpPost]
-        public ActionResult Contact (LienHe lienhe)
+        public ActionResult Contact (FormCollection f)
         {
+            
             string hoten = Request.Form["hotenLH"];
             string email = Request.Form["emailLH"];
             string noidung = Request.Form["noidungLH"];
 
+            LienHe lienhe = new LienHe();
+            lienhe.HoTen = hoten;
             lienhe.Email = email;
-            lienhe.NoiDung = hoten + " : " + noidung;
+            lienhe.NoiDung =  noidung;
             db.LienHes.Add(lienhe);
             db.SaveChanges();
             return RedirectToAction("Contact", "Trangchu");
@@ -43,9 +46,20 @@ namespace CNWeb.Controllers
         }
         public ActionResult News()
         {
-            var lstNew = db.TinTucs.ToList();
-            return View(lstNew);
+            List<TinTuc> listT = db.TinTucs.ToList();
+            return View(listT);
+
         }
+        //public ActionResult News()
+        //{
+        //    return View();
+        //}
+        //public ActionResult listNews(int? pageIndex)
+        //{
+        //    var lstNew = db.TinTucs.ToList();
+        //    int _pageIndex = pageIndex ?? 1;
+        //    return PartialView(lstNew.OrderBy(t => t.IDTinTuc).ToPagedList(_pageIndex, 3));
+        //}
         public ActionResult ResentNew()
         {
             List<TinTuc> resent = db.TinTucs.OrderByDescending((t => t.NgayDang)).Take(3).ToList();
@@ -66,18 +80,20 @@ namespace CNWeb.Controllers
             }
             else
             {
-                //items = db.SanPhams.Select(i=>i.IDLoaiSanPham).Where();
-                items = (from sp in db.SanPhams
-                         where sp.IDLoaiSanPham == loaiSP
-                         select sp).ToList();
+                items = db.SanPhams.Where(n => n.MaLoai == loaiSP && n.DaXoa == false).ToList();
+                //items = (from sp in db.SanPhams
+                //         where sp.MaLoai == loaiSP && sp.DaXoa
+                //         select sp).ToList();
 
             }
-            return PartialView(items.OrderBy(i => i.IDSanPham).ToPagedList(_pageIndex, 9));
+            return PartialView(items.OrderBy(i => i.TenSanPham).ToPagedList(_pageIndex, 9));
         }
-        public ActionResult Cart()
+        public ActionResult Product1(int IDLoai)
         {
-            return View();
+            var loaiSP = db.LoaiSanPhams.SingleOrDefault(s => s.ID == IDLoai);
+            return View(loaiSP);
         }
+        
 
         public PartialViewResult BreadcrumbsPartial()
         {
@@ -85,7 +101,7 @@ namespace CNWeb.Controllers
         }
         public ActionResult NewsDetail (int IdNew)
         {
-            TinTuc tin = db.TinTucs.SingleOrDefault(t => t.IDTinTuc == IdNew);
+            TinTuc tin = db.TinTucs.SingleOrDefault(t => t.ID == IdNew);
             return View(tin);
         }
         public ActionResult ProductDetail(int IdPro)
@@ -93,18 +109,18 @@ namespace CNWeb.Controllers
             SanPham sp = db.SanPhams.SingleOrDefault(s => s.IDSanPham == IdPro);
             return View(sp);
         }
-        public ActionResult HoSoTK(int? IdTK)
+        public ActionResult Profile(int? IdTK)
         {
 
             if(IdTK == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            TaiKhoan tk = db.TaiKhoans.SingleOrDefault(t => t.IdTaiKhoan == IdTK);
+            Account tk = db.Accounts.SingleOrDefault(t => t.IDTaiKhoan == IdTK);
             return View(tk);
         }
         [HttpPost]
-        public ActionResult HoSoTK([Bind(Include = "IdTaiKhoan,TaiKhoan1,MatKhau,HoTen,Email,SDT,DiaChi,NgayTao")] TaiKhoan taikhoan)
+        public ActionResult Profile([Bind(Include = "IdTaiKhoan,TaiKhoan1,MatKhau,HoTen,Email,SDT,DiaChi,NgayTao")] Account taikhoan)
         {
             if (ModelState.IsValid)
             {
@@ -114,5 +130,27 @@ namespace CNWeb.Controllers
             }
             return View(taikhoan);
         }
+        //public ActionResult listProductSearch(string strSearch)
+        //{
+        //    var items = new List<SanPham>();
+        //    if(strSearch == null)
+        //    {
+        //        items = db.SanPhams.ToList();
+        //    }
+        //    else
+        //    {
+        //        items = db.SanPhams.Where(s => s.TenSanPham.Contains(strSearch)).ToList();
+        //    }
+        //    return PartialView(items);
+        //}
+
+        //public ActionResult News( string strSearch)
+        //{
+        //    var items = new List<TinTuc>;
+        //    if(strSearch == null)
+        //    {
+
+        //    }
+        //}
     }
 }

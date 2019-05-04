@@ -15,5 +15,9 @@ namespace CNWeb.Models
         [StringLength(100, ErrorMessage ="Mật khẩu phải dài hơn 6 ký tự và ít hơn 100 ký tự",MinimumLength = 6)]
         [DataType(DataType.Password)]
         public string MatKhau { get; set; }
+
+        //[DataType(DataType.Password)]
+        //[Compare("MatKhau", ErrorMessage = "Mật khẩu không đúng")]
+        //public string XacNhanMatKhau { get; set; }
     }
 }

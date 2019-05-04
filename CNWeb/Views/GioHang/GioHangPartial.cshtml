@@ -1,0 +1,13 @@
+﻿
+
+<div class="cart box_1">
+    <a href="checkout.html">
+        <div class="total">
+            @ViewBag.TongSL
+            <span @*class="simpleCart_total"*@></span>
+        </div>
+        <img src="~/Content/images/cart-1.png" alt="" />
+    </a>
+    <p><a @*href="javascript:;"*@ class="simpleCart_empty">@Html.ActionLink("Giỏ hàng", "GioHang", "GioHang")</a></p>
+    <div class="clearfix"> </div>
+</div>

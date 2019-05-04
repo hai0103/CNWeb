@@ -28,30 +28,42 @@
 <div class="about">
     <div class="container">
         <div class="about-top grid-1">
-            <div class="col-md-4 about-left">
-                <figure class="effect-bubba">
-                    <img class="img-responsive" src="~/Content/images/cho1.jpg" alt="" />
-                    <figcaption>
-                        <h2>Chó</h2>
-                    </figcaption>
-                </figure>
-            </div>
-            <div class="col-md-4 about-left">
-                <figure class="effect-bubba">
-                    <img class="img-responsive" src="~/Content/images/topProd1.jpg" alt="" />
-                    <figcaption>
-                        <h4>Mèo</h4>
-                    </figcaption>
-                </figure>
-            </div>
-            <div class="col-md-4 about-left">
-                <figure class="effect-bubba">
-                    <img class="img-responsive" src="~/Content/images/tho.jpg" alt="" />
-                    <figcaption>
-                        <h4>Thỏ</h4>
+            <div class="col-md-4 about-left" data-id=1>
+                <a href="@Url.Action("Product1","Trangchu",new { @IDLoai = 1})">
+                    <figure class="effect-bubba" data-id=1>
 
-                    </figcaption>
-                </figure>
+                        <img class="img-responsive" src="~/Content/images/cho1.jpg" alt="" />
+
+                        <figcaption>
+                            <h2>Chó</h2>
+                        </figcaption>
+                    </figure>
+                </a>
+            </div>
+            <div class="col-md-4 about-left">
+                <a href="@Url.Action("Product1","Trangchu",new { @IDLoai = 2})">
+                    <figure class="effect-bubba" data-id=2>
+
+                        <img class="img-responsive" src="~/Content/images/topProd1.jpg" alt="" />
+
+                        <figcaption>
+                            <h4>Mèo</h4>
+                        </figcaption>
+                    </figure>
+                </a>
+            </div>
+            <div class="col-md-4 about-left">
+                <a href="@Url.Action("Product1","Trangchu",new { @IDLoai = 3})">
+                    <figure class="effect-bubba" data-id=3>
+
+                        <img class="img-responsive" src="~/Content/images/tho.jpg" alt="" />
+
+                        <figcaption>
+                            <h4>Thỏ</h4>
+
+                        </figcaption>
+                    </figure>
+                </a>
             </div>
             <div class="clearfix"></div>
         </div>
@@ -69,10 +81,10 @@
                        
                         <div class="col-md-3 product-left">
                             <div class="product-main simpleCart_shelfItem">
-                                <a href="@Url.Action("ProductDetail","Trangchu",new { @IdPro = item.IDSanPham})" class="mask"><img class="img-responsive zoom-img" src="@Url.Content(item.HinhAnh)" alt="" /></a>
+                                <a href="@Url.Action("ProductDetail","Trangchu",new { @IdPro = item.IDSanPham})" class="mask"><img class="img-responsive zoom-img" src="~/Content/images/@Url.Content(item.HinhAnh)" alt="" /></a>
                                 <div class="product-bottom">
                                     <h3> <a href="@Url.Action("ProductDetail", "Trangchu", new { @IdPro = item.IDSanPham })" class="mask">@item.TenSanPham</a></h3>
-                                    <h4><a class="item_add" href="#"><i></i></a> <span class=" item_price">@item.DonGia VNĐ</span></h4>
+                                    <h4><a class="icon_item_add" href="@Url.Action("ThemItemGioHang", "GioHang", new { @IDSanPham = item.IDSanPham, @SL = 1, @strUrl = "~/Trangchu/Index" })"><i></i></a> <span class=" item_price">@item.DonGia VNĐ</span></h4>
                                 </div>
                                 <div class="srch">
                                     <span>-50%</span>
@@ -89,3 +101,4 @@
 
 </div>
 <!--product-end-->
+

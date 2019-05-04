@@ -8,6 +8,7 @@
 }
 
 
+
 <!--start-single-->
 <div class="single contact">
     <div class="container">
@@ -17,8 +18,8 @@
                     <div class="col-md-5 single-top-left">
                         <div class="flexslider">
                             <ul class="slides">
-                                <li data-thumb="@Url.Content(Model.HinhAnh)">
-                                    <div class="thumb-image"> <img src="@Url.Content(Model.HinhAnh)" data-imagezoom="true" class="img-responsive" alt="" /> </div>
+                                <li data-thumb="@Url.Content("/Images/"+Model.HinhAnh)">
+                                    <div class="thumb-image"> <img src="@Url.Content("/Images/"+Model.HinhAnh)" data-imagezoom="true" class="img-responsive" alt="" /> </div>
                                 </li>
                         </div>
                         <!-- FlexSlider -->
@@ -27,13 +28,13 @@
                         <link rel="stylesheet" href="~/Content/css/flexslider.css" type="text/css" media="screen" />
 
                         <script>
-						// Can also be used with $(document).ready()
-						$(window).load(function() {
-						  $('.flexslider').flexslider({
-							animation: "slide",
-							controlNav: "thumbnails"
-						  });
-						});
+                            // Can also be used with $(document).ready()
+                            $(window).load(function () {
+                                $('.flexslider').flexslider({
+                                    animation: "slide",
+                                    controlNav: "thumbnails"
+                                });
+                            });
                         </script>
                     </div>
                     <div class="col-md-7 single-top-right">
@@ -42,16 +43,29 @@
                             <h5 class="item_price">@Model.DonGia VND</h5>
                             <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat.</p>
                             <div class="available">
+                                <div class="slTon">
+                                    Còn : @Model.SoLuong con
+                                </div>
                                 <div class="button-group">
-                                    <button type="button" onclick="buttonClickDec()" class="button">-</button>
-                                    <span><input type="text" id="sl" min="1" max="20" value="1"></input></span>
-                                    
-                                    <button type="button" onclick="buttonClickInc()" class="button">+</button>
-                                    
+                                    @*<button type="button" onclick="buttonClickDec()" class="button">-</button>*@
+                                    @*<div><input type="number" id="sl" min="1" max="10" value="1"></input></div>*@
+
+                                    @*<button type="button" onclick="buttonClickInc()" class="button">+</button>*@
+                                    @using (Html.BeginForm("ThemItemGioHang", "GioHang", new { @IDSanPham = Model.IDSanPham, @SL = 1, @strUrl = Request.Url.ToString() }))
+                                    {
+                                        @*<div><input type="number" id="sl" name="soluong" min="1" max="10" value="1"></input></div>*@
+                                        if (Model.SoLuong == 0)
+                                        {
+                                                <button class="add-cart item_add" disabled>Thêm vào giỏ</button>
+                                        }
+                                        else
+                                        {
+                                            <button class="add-cart item_add" >Thêm vào giỏ</button>
+                                         }
+                                    }
                                 </div>
 
                             </div>
-                            <a href="#" class="add-cart item_add">Thêm vào giỏ</a>
 
                         </div>
                     </div>
@@ -62,7 +76,7 @@
                         <div class="item1">
                             <span>Mô tả</span>
                             <p>
-                                @Model.MoTa    
+                                @Model.MoTa
                             </p>
 
                         </div>
@@ -73,17 +87,17 @@
                     <span id="tlp">Sản phẩm liên quan</span>
                     <div class="product-one">
                         @{
-                            OnlineShop db = new OnlineShop();
-                            List<SanPham> splq = db.SanPhams.Where(sp => sp.IDLoaiSanPham == Model.IDLoaiSanPham && sp.DaXoa == true && sp.IDSanPham != Model.IDSanPham).Take(3).ToList();
+                            OnlineShopDbConText db = new OnlineShopDbConText();
+                            List<SanPham> splq = db.SanPhams.Where(sp => sp.MaLoai == Model.MaLoai && sp.DaXoa == true && sp.IDSanPham != Model.IDSanPham).Take(3).ToList();
                             foreach (var item in splq)
                             {
                                 <div class="col-md-4 product-left p-left">
                                     <div class="product-main simpleCart_shelfItem">
-                                        <a href="@Url.Action("ProductDetail","Trangchu",new { @IdPro = item.IDSanPham})" class="mask"><img class="img-responsive zoom-img" src="@Url.Content(item.HinhAnh)" alt="" /></a>
+                                        <a href="@Url.Action("ProductDetail","Trangchu",new { @IdPro = item.IDSanPham})" class="mask"><img class="img-responsive zoom-img" src="@Url.Content("/Images/"+item.HinhAnh)" alt="" /></a>
                                         <div class="product-bottom">
                                             <h3> <a href="@Url.Action("ProductDetail", "Trangchu", new { @IdPro = item.IDSanPham })" class="mask">@item.TenSanPham</a></h3>
                                             <p>Khám phá ngay</p>
-                                            <h4><a class="item_add" href="#"><i></i></a> <span class=" item_price">@item.DonGia</span></h4>
+                                            <h4><a class="icon_item_add" href="#"><i></i></a> <span class=" item_price">@item.DonGia</span></h4>
                                         </div>
                                         <div class="srch">
                                             <span>-50%</span>
@@ -94,45 +108,7 @@
                         }
 
 
-                        @*<div class="col-md-4 product-left p-left">
-            <div class="product-main simpleCart_shelfItem">
-                <a href="single.html" class="mask"><img class="img-responsive zoom-img" src="~/Content/images/cho2.jpg" alt="" /></a>
-                <div class="product-bottom">
-                    <h3>Smart Watches</h3>
-                    <p>Explore Now</p>
-                    <h4><a class="item_add" href="#"><i></i></a> <span class=" item_price">$ 329</span></h4>
-                </div>
-                <div class="srch">
-                    <span>-50%</span>
-                </div>
-            </div>
-        </div>
-        <div class="col-md-4 product-left p-left">
-            <div class="product-main simpleCart_shelfItem">
-                <a href="single.html" class="mask"><img class="img-responsive zoom-img" src="~/Content/images/cho3.jpg" alt="" /></a>
-                <div class="product-bottom">
-                    <h3>Smart Watches</h3>
-                    <p>Explore Now</p>
-                    <h4><a class="item_add" href="#"><i></i></a> <span class=" item_price">$ 329</span></h4>
-                </div>
-                <div class="srch">
-                    <span>-50%</span>
-                </div>
-            </div>
-        </div>
-        <div class="col-md-4 product-left p-left">
-            <div class="product-main simpleCart_shelfItem">
-                <a href="single.html" class="mask"><img class="img-responsive zoom-img" src="~/Content/images/cho2.jpg" alt="" /></a>
-                <div class="product-bottom">
-                    <h3>Smart Watches</h3>
-                    <p>Explore Now</p>
-                    <h4><a class="item_add" href="#"><i></i></a> <span class=" item_price">$ 329</span></h4>
-                </div>
-                <div class="srch">
-                    <span>-50%</span>
-                </div>
-            </div>
-        </div>*@
+                        
                         <div class="clearfix"></div>
                     </div>
                 </div>
@@ -152,19 +128,7 @@
                             </div>
                         </div>
                     </section>
-                    @*<section class="sky-form">
-                        <h4>Loại thú cưng</h4>
-                        <div class="row1 row2 scroll-pane">
-
-                            <div class="col col-4">
-                                <label class="checkbox"><input type="checkbox" name="checkbox" checked=""><i></i>Chó</label>
-                                <label class="checkbox"><input type="checkbox" name="checkbox"><i></i>Mèo</label>
-                                <label class="checkbox"><input type="checkbox" name="checkbox"><i></i>Thỏ</label>
-                                <label class="checkbox"><input type="checkbox" name="checkbox"><i></i>Hamster</label>
-                                <label class="checkbox"><input type="checkbox" name="checkbox"><i></i>Nhím</label>
-                            </div>
-                        </div>
-                    </section>*@
+                   
                 </div>
             </div>
             <div class="clearfix"> </div>
@@ -173,14 +137,25 @@
 </div>
 <!--end-single-->
 
+
 <script>
-    var i = 1;
-    function buttonClickInc() {
-        
-        document.getElementById('sl').value = ++i;
+    //var i = 1;
+    //function buttonClickInc() {
+
+    //    document.getElementById('sl').value = ++i;
+    //}
+    //function buttonClickDec() {
+
+    //    document.getElementById('sl').value = --i;
+    //}
+
+    function getNumber() {
+        var soluong = document.getElementById("sl").value;
+        return soluong;
+
     }
-    function buttonClickDec() {
-        
-        document.getElementById('sl').value = --i;
-    }
+    //$('#sl').change(function () {
+    //    console.log( getNumber());
+    //})
 </script>
+
