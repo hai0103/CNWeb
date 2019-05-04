@@ -37,7 +37,7 @@
 
         [StringLength(50)]
         [Display(Name = "Hình ảnh")]
-        [Required(ErrorMessage = "Bạn chưa chọn ảnh")]
+        
         public string HinhAnh { get; set; }
 
         [Display(Name = "Đã xóa")]

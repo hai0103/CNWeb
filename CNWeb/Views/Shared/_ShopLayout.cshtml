@@ -28,7 +28,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
 </head>
 <body>
-    
+
 
     <!--top-header-->
     <div class="top-header">
@@ -44,16 +44,16 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                 </div>
                 <div class="col-md-6 top-header-left">
                     @*<div class="cart box_1">
-                        <a href="checkout.html">
-                            <div class="total">
-                                <span>@ViewBag.TongSL</span>
-                            </div>
-                            <img src="~/Content/images/cart-1.png" alt="" />
-                        </a>
-                        <p><a href="javascript:;" class="simpleCart_empty">@Html.ActionLink("Giỏ hàng", "GioHang", "GioHang")</a></p>
-                        <div class="clearfix"> </div>
-                    </div>*@
-                    @Html.Action("GioHangPartial","GioHang")
+                            <a href="checkout.html">
+                                <div class="total">
+                                    <span>@ViewBag.TongSL</span>
+                                </div>
+                                <img src="~/Content/images/cart-1.png" alt="" />
+                            </a>
+                            <p><a href="javascript:;" class="simpleCart_empty">@Html.ActionLink("Giỏ hàng", "GioHang", "GioHang")</a></p>
+                            <div class="clearfix"> </div>
+                        </div>*@
+                    @Html.Action("GioHangPartial", "GioHang")
                 </div>
                 <div class="clearfix"></div>
             </div>
@@ -62,7 +62,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
     <!--top-header-->
     <!--start-logo-->
     <div class="logo">
-        
+
         <a href="@Url.Action("Index","Trangchu")" class="logo-img"><img class="img-responsive" src="~/Content/images/lushop1.png" alt="" /></a>
     </div>
     <!--start-logo-->
@@ -76,19 +76,19 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                             <li class="active">@Html.ActionLink("Trang chủ", "Index", "Trangchu")</li>
                             <li class="grid">@Html.ActionLink("Giới thiệu", "Introduce", "Trangchu")</li>
                             <li class="grid">@Html.ActionLink("Sản phẩm", "Products", "Trangchu")</li>
-                            <li class="grid">@Html.ActionLink("Liên hệ","Contact","Trangchu")</li>
+                            <li class="grid">@Html.ActionLink("Liên hệ", "Contact", "Trangchu")</li>
                             <li class="grid">@Html.ActionLink("Tin tức", "News", "Trangchu")</li>
                         </ul>
                     </div>
                     <div class="clearfix"> </div>
                 </div>
                 @*<div class="col-md-3 header-right">
-                    <div class="search-bar">
-                        <input type="text" value="Tìm kiếm" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Tìm kiếm';}">
-                        <input type="submit" value="">
+                        <div class="search-bar">
+                            <input type="text" value="Tìm kiếm" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Tìm kiếm';}">
+                            <input type="submit" value="">
+                        </div>
                     </div>
-                </div>
-                <div class="clearfix"> </div>*@
+                    <div class="clearfix"> </div>*@
             </div>
         </div>
     </div>
@@ -187,5 +187,6 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 
         });
     </script>
+    <script src="~/Scripts/jquery.unobtrusive-ajax.js"></script>
 </body>
 </html>

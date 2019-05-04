@@ -4035,3 +4035,15 @@ img.responsive {
     margin-bottom: 15px;
     margin-top: 10px;
 }
+
+
+.container.timkiem {
+    margin: 0;
+    padding: 0;
+}
+
+#dTimKiem {
+    margin-left: 0px;
+    padding-left: 0px;
+    width: 268px;
+}

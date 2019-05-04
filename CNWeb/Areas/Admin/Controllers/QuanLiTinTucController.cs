@@ -109,7 +109,8 @@ namespace CNWeb.Areas.Admin.Controllers
 
                         item.HinhAnh = HinhAnh.FileName;
                     }
-                    item.NoiDung = entity.NoiDung;
+                item.TomTat = entity.TomTat;
+                item.NoiDung = entity.NoiDung;
 
                     db.SaveChanges();
                     return RedirectToAction("Index");

@@ -15,17 +15,30 @@
     <div class="container">
         <div class="prdt-top">
             <div class="col-md-9 prdt-left">
-                <div class="SPcontent">
+                <div class="SPcontent" id="FindResult">
 
                 </div>
             </div>
             <div class="col-md-3 prdt-right">
                 <div class="w_sidebar">
                     <section class="header-right ">
-                        <div class="search-bar">
-                            <input class="txtS" type="text" value="Tìm kiếm" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Tìm kiếm';}">
-                            <input class="smS" type="submit" value="">
-                        </div>
+                        @*<div class="search-bar">*@
+                        @*<input class="txtS" type="text" value="Tìm kiếm" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Tìm kiếm';}">
+        <input class="smS" type="submit" value="">*@
+                        @using (Ajax.BeginForm("TimKiem_Partial", "TimKiem", new AjaxOptions { UpdateTargetId = "FindResult", InsertionMode = InsertionMode.Replace }))
+
+                        {
+                            <div class="container timkiem">
+                                <div class=" col-md-3 " id="dTimKiem">
+                                    <div class="search-bar">
+                                        <input type="text" placeholder="Tìm kiếm" name="sTimKiem">
+                                        <input type="submit" value="">
+                                    </div>
+                                </div>
+                                <div class="clearfix"> </div>
+                            </div>
+                        }
+                        @*</div>*@
                     </section>
                     <div class="clearfix"> </div>
                     <section class="sky-form">
@@ -52,7 +65,7 @@
                                     {
                                         <label data-id="@item.ID" class="checkbox listCate"><input type="radio" name="checkbox"><i></i>@item.TenLoai</label>
                                         @*<li data-id="@item.IDLoaiSanPham" class="listCate"><a href="">@item.TenLoai</a></li>*@
-                                    }
+                                        }
 
                             </div>
                             </ul>
@@ -87,23 +100,5 @@
         })
     });
 
-    @*function loadDataSearch(strS) {
-        $.ajax({
-            type: 'GET',
-            data: { strSearch: strS },
-            url '@Url.Action("listProductSearch","Trangchu")',
-            dataType: 'html',
-            success: function (data) {
-                $('SP.content').html(data);
-            }
-        });
-    }
-    $(function () {
-        loadDataSearch(null);
-        $('.smS').submit(function () {
-            var strS = $('.txtS').val();
-            console.log(strS);
-            loadDataSearch(strS);
-        })
-    });*@
+    
 </script>
