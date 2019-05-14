@@ -39,7 +39,7 @@ namespace CNWeb.Areas.Admin.Controllers
 
         public ActionResult Logout()
         {
-            Session["admin"] = null;
+            Session["id"] = null;
             return RedirectToAction("Login");
         }
         
