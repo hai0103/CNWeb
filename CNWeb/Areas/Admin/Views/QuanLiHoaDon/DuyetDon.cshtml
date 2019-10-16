@@ -1,0 +1,69 @@
+﻿@using CNWeb.Models;
+@model CNWeb.Models.DonHang
+@{
+    ViewBag.Title = "DuyetDon";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h2>Thông tin đơn hàng @Model.TaiKhoan.HoTen </h2>
+<br />
+<br />
+
+<form action="/Admin/QuanLiHoaDon/DuyetDon" method="post">
+
+    <div class="CTDH table">
+        @{IEnumerable<ChiTietDonHang> CTDH = (IEnumerable<ChiTietDonHang>)ViewBag.CTDH;}
+
+        <table class="table" id="table">
+            <tr>
+                <td colspan="4">
+                    <table style="width:100%">
+                        <tr>
+                            <td>Mã đơn hàng: <b style="color:red">@Model.IDDonHang @Html.Hidden("IDDonHang", Model.IDDonHang)</b></td>
+                            <td>Tên khách hàng: <b style="color:red">@Model.TaiKhoan.HoTen</b></td>
+                            <td>Số điện thoại: <b style="color:red">@Model.TaiKhoan.SDT</b></td>
+                            <td>Ngày đặt: <b style="color:red">@Model.NgayDat</b></td>
+                            <td>Tình trạng giao: @Html.EditorFor(model => model.TinhTrangGiao)</td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+
+            <tr>
+                <td><b>Sản phẩm</b></td>
+                <td><b>Hình ảnh</b></td>
+                <td><b>Số lượng đặt</b></td>
+                <td><b>Đơn giá</b></td>
+            </tr>
+            @foreach (var item in CTDH)
+            {
+                <tr>
+                    <td>@item.SanPham.TenSanPham</td>
+                    <td><img src="@Url.Content("/Images/" + @item.SanPham.HinhAnh)" alt="hình ảnh" width="150px" height="150px" /></td>
+                    <td>@item.SoLuong</td>
+                    <td>@item.SanPham.DonGia</td>
+                </tr>
+            }
+            <tr>
+                <td  style="text-align:right" colspan="4">Tổng số lượng: @Model.ChiTietDonHangs.Sum(n => n.SoLuong) sản phẩm</td>
+            </tr>
+            @{decimal? tongtien = Model.ChiTietDonHangs.Sum(n => n.SanPham.DonGia * n.SoLuong); }           
+            <tr>
+                <td  style="text-align:right" colspan="4">Tổng tiền tạm thời: @tongtien.Value.ToString("#,##") vnd</td>
+            </tr>
+            <tr>
+                <td  style="text-align:right" colspan="4">Giảm giá: @Model.UuDai %</td>
+            </tr>
+            @{ float tt = (float)tongtien - (float)tongtien * (float)Model.UuDai / (float)100;}
+            <tr>
+                <td  style="text-align:right" colspan="4">Tổng tiền: @tt.ToString("#,##") vnd</td>
+            </tr>
+        </table>
+
+        <br /><br />
+              <button class="btn btn-primary" id="btnInDH">In đơn hàng</button>
+              <input type="submit"  value="Lưu đơn hàng" name="LuuDH" class="btn btn-success" id="btnLuuDH" />
+    </div>
+
+</form>
+

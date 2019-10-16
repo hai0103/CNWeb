@@ -1,0 +1,145 @@
+﻿@using CNWeb.Models
+@model List<TinTuc>
+
+
+@{
+    ViewBag.Title = "Tin tức";
+    Layout = "~/Views/Shared/_ShopLayout.cshtml";
+}
+
+@Html.Partial("BreadcrumbsPartial", "Shared")
+
+<!--news-starts-->
+<div class="news">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12 col-sm-9 col-md-9 col-lg-9 news-left content-News">
+
+                @*@Html.Action("listNews","Trangchu")*@
+                @{
+                    foreach (var item in Model)
+                    {
+                        <article class="news-one">
+                            <div class="col-md-4 news-image">
+                                <a href="@Url.Action("NewsDetail","Trangchu", new { @IdNew = item.ID})"><img src="@Url.Content("/Images/"+item.HinhAnh)" class="img-responsive" alt=""></a>
+                            </div>
+                            <div class="col-md-8 news-content">
+                                <header>
+                                    <h1 class="title-news"><a href="@Url.Action("NewsDetail","Trangchu", new { @IdNew = item.ID})">@item.TieuDe</a></h1>
+                                    <span class="date-news">@item.NgayDang</span>
+                                </header>
+                                <main>
+                                    <p>@item.TomTat</p>
+                                </main>
+                                <div class="news-share">
+                                    <h3>Chia sẻ ngay</h3>
+                                    <ul class="icon-share">
+                                        <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
+                                        <li><a href="#"><i class="fab fa-twitter"></i></a></li>
+                                        <li><a href="#"><i class="fab fa-google-plus-g"></i></a></li>
+
+                                    </ul>
+                                </div>
+                            </div>
+                        </article>
+
+                    }
+
+
+                }
+                @*<div class="pagenatin">
+                    <div class="col-sm-4 col-xs-12 col-sm-offset-4">
+                        @{
+                            for (int i = 1; i <= Model.PageCount; i++)
+                            {
+                                if (i == Model.PageNumber)
+                                {
+                                    <span data-id="@i" style="color:#73B6E1; background:#eee" class="pageindex">@i</span>
+                                }
+                                else
+                                {
+                                    <span data-id="@i" style="color:#73B6E1; background:white" class="pageindex">@i</span>
+                                }
+                            }
+                        }
+
+
+                    </div>
+                    <div class="clearfix"></div>
+                </div>*@
+            </div>
+
+            <div class="col-xs-12 col-sm-3 col-md-3 col-lg-3 news-right">
+                <div class="w_sidebar">
+                    <section class="header-right ">
+                        <div class="search-bar">
+                            <input type="text" value="Tìm kiếm" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Tìm kiếm';}">
+                            <input type="submit" value="">
+                        </div>
+                    </section>
+                    <div class="clearfix"> </div>
+                    @*<section class="sky-form">
+                        <h4>Phân loại tin tức</h4>
+                        <div class="row1 row2 scroll-pane">
+
+                            <div class="col col-4">
+                                <label class="checkbox"><input type="checkbox" name="checkbox" checked=""><i></i>Chó</label>
+                                <label class="checkbox"><input type="checkbox" name="checkbox"><i></i>Mèo</label>
+                                <label class="checkbox"><input type="checkbox" name="checkbox"><i></i>Thỏ</label>
+                                <label class="checkbox"><input type="checkbox" name="checkbox"><i></i>Hamster</label>
+                                <label class="checkbox"><input type="checkbox" name="checkbox"><i></i>Nhím</label>
+                            </div>
+                        </div>
+                    </section>*@
+
+                    <section class="news-new sky-form">
+                        <h4>Tin tức mới nhất</h4>
+                        @Html.Action("ResentNew", "Trangchu")
+
+                    </section>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<!--news-end -->
+@*<script>
+        function loadDataNew(trang) {
+        $.ajax({
+            type: 'GET',
+            data: { pageIndex: trang },
+            url: '@Url.Action("News","Trangchu")',
+            
+            success: function () {
+                location.reload();
+            }
+        });
+    }
+
+
+    $(function () {
+        //loadDataNew(null);
+        $('.pageindex').click(function () {
+            var trang = $(this).data('id');
+            loadDataNew(trang);
+            console.log(trang)
+        })
+    });
+
+</script>*@
+
+
+<style>
+    .pageindexs {
+        padding: 306px 0px 153px 340px;
+    }
+
+        .pageindex1 span {
+            margin-left: 10px;
+            border: solid 1px;
+            padding: 10px;
+            cursor: pointer;
+        }
+</style>

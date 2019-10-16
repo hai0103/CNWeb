@@ -1,0 +1,38 @@
+﻿@using CNWeb.Models
+@model DangNhap
+
+@{
+    ViewBag.Title = "Đăng nhập - Đăng ký tài khoản";
+    Layout = "~/Views/Shared/_ShopLayout.cshtml";
+}
+
+
+<!--account-starts-->
+<div class="account">
+    <div class="container">
+        <div class="account-top heading">
+            <h2>Đăng nhập</h2>
+        </div>
+        <div class="account-main">
+            <div class="col-md-6 account-left">
+                <h3>Đã có tài khoản</h3>
+                <form method="post" class="account-bottom">
+                    <input placeholder="Tài khoản" type="text" name="tk" tabindex="3" required>
+                    <input placeholder="Mật khẩu" type="password" name="mk" tabindex="4" required>
+                    <div class="address">
+                        <a class="forgot" href="#">Quên mật khẩu?</a>
+                        <input type="submit" value="Đăng nhập">
+                    </div>
+                    
+                </form>
+            </div>
+            <div class="col-md-6 account-right account-left">
+                <h3>Bạn chưa có tài khoản. Đăng kí tại đây</h3>
+                <p>By creating an account with our store, you will be able to move through the checkout process faster, store multiple shipping addresses, view and track your orders in your account and more.</p>
+                <a href="@Url.Action("DangKy","DangNhap")">Đăng kí</a>
+            </div>
+            <div class="clearfix"></div>
+        </div>
+    </div>
+</div>
+<!--account-end-->

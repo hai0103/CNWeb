@@ -1,0 +1,97 @@
+﻿@using PagedList;
+@using PagedList.Mvc;
+@model PagedList.PagedList<CNWeb.Models.Account>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h3>Danh sách tài khoản</h3>
+<br /><br />
+<table class="table table-bordered">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.First().TaiKhoan)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.First().MatKhau)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.First().HoTen)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.First().Email)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.First().SDT)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.First().DiaChi)
+        </th>
+        <th>#</th>
+    </tr>
+
+@foreach (var item in Model) {
+   <tr id="@Url.Content("row"+item.IDTaiKhoan)" >
+        <td>
+            @Html.DisplayFor(modelItem => item.TaiKhoan)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.MatKhau)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.HoTen)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Email)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.SDT)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DiaChi)
+        </td>
+       
+        <td>
+            @Ajax.ActionLink("Xóa","Delete",new { @id=item.IDTaiKhoan },
+                        new AjaxOptions { HttpMethod="Delete",Confirm="Bạn có chắc chắn xóa tài khoản này",OnComplete=Url.Content("$('#row"+item.IDTaiKhoan+"').remove();")}
+            )
+        </td>
+    </tr>
+}
+</table>
+
+@Html.PagedListPager(Model,Page => Url.Action("Index",new { Page= Page}))
+<style>
+    .btn, .btn-primary {
+        margin-top: 25px;
+        margin-bottom: 10px;
+    }
+
+    .pagination > li.active {
+        padding: 5px 10px;
+        background-color: #858592;
+    }
+
+    .pagination > li {
+        padding: 5px 10px;
+        background-color: #cabfbf;
+        border: 0.5px solid;
+        margin-left: 3px;
+    }
+
+    .table th {
+        color: #fff;
+        font-size: 15px;
+        background-color: green;
+    }
+
+    .table th, .table td {
+        padding: 0.74rem;
+        vertical-align: top;
+        border-top: 1px solid #dee2e6;
+        text-align: center;
+        font-size: 13px;
+    }
+</style>

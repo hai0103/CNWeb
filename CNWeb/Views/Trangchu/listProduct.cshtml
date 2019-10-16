@@ -1,0 +1,78 @@
+﻿@using CNWeb.Models
+@model PagedList.PagedList<SanPham>
+
+
+<div class="product-one">
+    @{
+
+        foreach (var item in Model)
+        {
+            
+            <div class="col-md-4 product-left p-left">
+                <div class="product-main simpleCart_shelfItem">
+                    <a href="@Url.Action("ProductDetail","Trangchu",new { @IdPro = item.IDSanPham})" class="mask">
+                        <img class="img-responsive zoom-img" src="@Url.Content("/Images/" + item.HinhAnh)" alt="" />
+                    </a>
+                    <div class="product-bottom">
+                        <h3> <a href="@Url.Action("ProductDetail", "Trangchu", new { @IdPro = item.IDSanPham })" class="mask">@item.TenSanPham</a></h3>
+                        <p>Khám phá ngay</p>
+                        <h4><a class="icon_item_add" href="@Url.Action("ThemItemGioHang", "GioHang", new { @IDSanPham = item.IDSanPham, @SL = 1, @strUrl = "~/Trangchu/Products" })"><i></i></a> <span class=" item_price">@item.DonGia VNĐ</span></h4>
+                    </div>
+                    <div class="srch srch1">
+                        <span>-50%</span>
+                    </div>
+                </div>
+            </div>
+
+
+                @*<img src="@Url.Content("/Images"/+item.HinhAnh)" alt="Alternate Text" />*@
+        }
+    }
+
+
+
+
+    <div class="clearfix"></div>
+</div>
+<div class="pagenatin">
+    <div class=" col-xs-12 ">
+        @{
+            for (int i = 1; i <= Model.PageCount; i++)
+            {
+                if (i == Model.PageNumber)
+                {
+                    <span data-id="@i" style="color:#73B6E1; background:#eee" class="pageindex">@i</span>
+                }
+                else
+                {
+                    <span data-id="@i" style="color:#73B6E1; background:white" class="pageindex">@i</span>
+                }
+            }
+        }
+
+        
+    </div>
+    <div class="clearfix"></div>
+</div>
+<script>
+    $(function () {
+        $('.pageindex').click(function () {
+            var trang = $(this).data('id');
+            var maloai = $('maloai').data('id');
+            loadData(maloai, trang)
+        });
+    })
+</script>
+
+<style>
+    .pageindexs {
+        padding: 306px 0px 153px 340px;
+    }
+
+        .pageindexs span {
+            margin-left: 10px;
+            border:solid 1px;
+            padding: 10px;
+            cursor: pointer;
+        }
+</style>

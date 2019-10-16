@@ -1,0 +1,95 @@
+﻿@using PagedList;
+@using PagedList.Mvc;
+@model PagedList.PagedList<CNWeb.Models.TinTuc>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h3>Bài đăng</h3>
+<br /><br />
+<button class="btn btn-primary">
+    @Html.ActionLink("Thêm mới", "Create")
+</button>
+<table class="table table-bordered">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.First().TieuDe)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.First().NgayDang)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.First().TomTat)
+        </th>
+
+
+        <th>#</th>
+        <th>#</th>
+        <th>#</th>
+
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr id="@Url.Content("row"+item.ID)">
+            <td>
+                @Html.DisplayFor(modelItem => item.TieuDe)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NgayDang)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TomTat)
+            </td>
+
+
+            <td>
+                @Html.ActionLink("Cập nhật", "Edit", new { @id = item.ID })
+            </td>
+            <td>
+                @Html.ActionLink("Xem chi tiết", "Details", new { @id = item.ID })
+            </td>
+            <td>
+                @Ajax.ActionLink("Gỡ bài","Delete",new { @id=item.ID },
+                            new AjaxOptions { HttpMethod="Delete",Confirm="Bạn chắc chắn muốn gỡ bài này",OnComplete=Url.Content("$('#row"+item.ID+"').remove();")}
+                )
+            </td>
+        </tr>
+    }
+</table>
+<div class="menuPage">
+    @Html.PagedListPager(Model, Page => Url.Action("Index", new { Page = Page }))
+</div>
+
+<style>
+    .btn, .btn-primary {
+        margin-top: 25px;
+        margin-bottom: 10px;
+    }
+    .pagination > li.active {
+        padding: 5px 10px;
+        background-color: #858592;
+    }
+
+    .pagination > li {
+        padding: 5px 10px;
+        background-color: #cabfbf;
+        border: 0.5px solid;
+        margin-left: 3px;
+    }
+    .table th {
+        color: #fff;
+        font-size: 15px;
+        background-color: green;
+    }
+
+    .table th, .table td {
+        padding: 0.74rem;
+        vertical-align: top;
+        border-top: 1px solid #dee2e6;
+        text-align: center;
+        font-size: 13px;
+    }
+</style>

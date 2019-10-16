@@ -1,0 +1,192 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+
+    <title>LuLu Shop </title>
+    <link href="~/Content/css/bootstrap.css" rel="stylesheet" type="text/css" media="all" />
+    <!--jQuery(necessary for Bootstrap's JavaScript plugins)-->
+    <script src="~/Content/js/jquery-1.11.0.min.js"></script>
+    <!--Custom-Theme-files-->
+    <!--theme-style-->
+    <link href="~/Content/css/style.css" rel="stylesheet" type="text/css" media="all" />
+    <!--//theme-style-->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="keywords" content="Luxury Watches Responsive web template, Bootstrap Web Templates, Flat Web Templates, Andriod Compatible web template,
+Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyErricsson, Motorola web design" />
+    <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
+    <!--start-menu-->
+    <script src="~/Content/js/simpleCart.min.js"></script>
+    <link href="~/Content/css/memenu.css" rel="stylesheet" type="text/css" media="all" />
+    <script type="text/javascript" src="~/Content/js/memenu.js"></script>
+    <script>$(document).ready(function () { $(".memenu").memenu(); });</script>
+    <!--dropdown-->
+    <script src="~/Content/js/jquery.easydropdown.js"></script>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+</head>
+<body>
+
+
+    <!--top-header-->
+    <div class="top-header">
+        <div class="container">
+            <div class="top-header-main">
+                <div class="col-md-6 top-header-left">
+                    <div class="drop">
+                        <div class="login-partial">
+                            @Html.Partial("DangNhapPartial")
+                        </div>
+                        <div class="clearfix"></div>
+                    </div>
+                </div>
+                <div class="col-md-6 top-header-left">
+                    @*<div class="cart box_1">
+                            <a href="checkout.html">
+                                <div class="total">
+                                    <span>@ViewBag.TongSL</span>
+                                </div>
+                                <img src="~/Content/images/cart-1.png" alt="" />
+                            </a>
+                            <p><a href="javascript:;" class="simpleCart_empty">@Html.ActionLink("Giỏ hàng", "GioHang", "GioHang")</a></p>
+                            <div class="clearfix"> </div>
+                        </div>*@
+                    @Html.Action("GioHangPartial", "GioHang")
+                </div>
+                <div class="clearfix"></div>
+            </div>
+        </div>
+    </div>
+    <!--top-header-->
+    <!--start-logo-->
+    <div class="logo">
+
+        <a href="@Url.Action("Index","Trangchu")" class="logo-img"><img class="img-responsive" src="~/Content/images/lushop1.png" alt="" /></a>
+    </div>
+    <!--start-logo-->
+    <!--bottom-header-->
+    <div class="header-bottom">
+        <div class="container">
+            <div class="header">
+                <div class="col-md-9 header-left">
+                    <div class="top-nav">
+                        <ul class="memenu skyblue">
+                            <li class="active">@Html.ActionLink("Trang chủ", "Index", "Trangchu")</li>
+                            <li class="grid">@Html.ActionLink("Giới thiệu", "Introduce", "Trangchu")</li>
+                            <li class="grid">@Html.ActionLink("Sản phẩm", "Products", "Trangchu")</li>
+                            <li class="grid">@Html.ActionLink("Liên hệ", "Contact", "Trangchu")</li>
+                            <li class="grid">@Html.ActionLink("Tin tức", "News", "Trangchu")</li>
+                        </ul>
+                    </div>
+                    <div class="clearfix"> </div>
+                </div>
+                @*<div class="col-md-3 header-right">
+                        <div class="search-bar">
+                            <input type="text" value="Tìm kiếm" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Tìm kiếm';}">
+                            <input type="submit" value="">
+                        </div>
+                    </div>
+                    <div class="clearfix"> </div>*@
+            </div>
+        </div>
+    </div>
+    <!--bottom-header-->
+
+    <div>
+        @RenderBody()
+    </div>
+
+
+    <!--information-starts-->
+    <div class="information">
+        <div class="container">
+            <div class="infor-top">
+                <div class="row">
+                    <div class="col-md-3 col-xs-12 infor-left">
+                        <h3>Theo dõi chúng tôi</h3>
+                        <ul>
+                            <li><a href="#"><span class="fb"></span><h6>Facebook</h6></a></li>
+                            <li><a href="#"><span class="twit"></span><h6>Twitter</h6></a></li>
+                            <li><a href="#"><span class="google"></span><h6>Google+</h6></a></li>
+                        </ul>
+                    </div>
+                    <div class="col-md-3 col-xs-12 infor-left">
+                        <h3>Về chúng tôi</h3>
+                        <ul>
+                            <li><p>@Html.ActionLink("Trang chủ", "Index", "Trangchu")</p></li>
+                            <li><p>@Html.ActionLink("Giới thiệu", "Introduce", "Trangchu")</p></li>
+                            <li><p>@Html.ActionLink("Sản phẩm", "Products", "Trangchu")</p></li>
+                            <li><p>@Html.ActionLink("Liên hệ", "Contact", "Trangchu")</p></li>
+                        </ul>
+                    </div>
+                    <div class="col-md-3 col-xs-12 infor-left">
+                        <h3>Hỗ trợ khách hàng</h3>
+                        <ul>
+                            <li><a href="index.html"><p>Tìm kiếm</p></a></li>
+                            <li><a href="account.html"><p>Đăng nhập</p></a></li>
+                            <li><a href="register.html"><p>Đăng kí</p></a></li>
+                            <li><a href="checkout.html"><p>Giỏ hàng</p></a></li>
+                        </ul>
+                    </div>
+                    <div class="col-md-3 col-xs-12 infor-left">
+                        <h3>Thông tin cửa hàng</h3>
+                        <h4>
+                            Cửa hàng
+                            LuLu Shop,
+                            <span>236-Hoàng Quốc Việt,Hà Nội.</span>
+                        </h4>
+                        <h5>+955 123 4567</h5>
+                        <p><a href="mailto:example@email.com">contact@example.com</a></p>
+                    </div>
+                    <div class="clearfix"></div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <!--information-end-->
+    <!--footer-starts-->
+    <div class="footer">
+        <div class="container">
+            <div class="footer-top">
+                <div class="col-md-6 footer-left">
+                    <form>
+                        <input type="text" value="Nhập Email" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Nhập Email';}">
+                        <input type="submit" value="Theo dõi">
+                    </form>
+                </div>
+                <div class="col-md-6 footer-right">
+                    <p>© 2015 Luxury Watches. All Rights Reserved</p>
+                </div>
+                <div class="clearfix"></div>
+            </div>
+        </div>
+    </div>
+    <!--footer-end-->
+
+    <script src="~/Content/js/responsiveslides.min.js"></script>
+    <script>
+        // You can also use "$(window).load(function() {"
+        $(function () {
+            // Slideshow 4
+            $("#slider4").responsiveSlides({
+                auto: true,
+                pager: true,
+                nav: true,
+                speed: 500,
+                namespace: "callbacks",
+                before: function () {
+                    $('.events').append("<li>before event fired.</li>");
+                },
+                after: function () {
+                    $('.events').append("<li>after event fired.</li>");
+                }
+            });
+
+        });
+    </script>
+    <script src="~/Scripts/jquery.unobtrusive-ajax.js"></script>
+</body>
+</html>

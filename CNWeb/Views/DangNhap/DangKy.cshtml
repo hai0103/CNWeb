@@ -1,0 +1,35 @@
+﻿@using CNWeb.Models
+@model DangNhap
+
+@{
+    ViewBag.Title = "DangKy";
+    Layout = "~/Views/Shared/_ShopLayout.cshtml";
+}
+
+
+<!--register-starts-->
+<div class="register">
+    <div class="container">
+        <div class="register-top heading">
+            <h2>Đăng kí</h2>
+        </div>
+        <form method="post" class="register-main">
+            <div class="col-md-6 account-left">
+                <input placeholder="Họ tên" type="text" name="hotenDK" tabindex="1" required>
+                <input placeholder="Email" type="text" name="emailDK" tabindex="2" required>
+                <input placeholder="Số điện thoại" type="text" name="sdtDK" tabindex="3" required>
+                <input placeholder="Địa chỉ" type="text" name="diachiDK" tabindex="4" required>
+            </div>
+            <div class="col-md-6 account-left">
+                <input placeholder="Tài khoản" type="text" name="tkDK" tabindex="5" required>
+                <input placeholder="Mật khẩu" type="password" name="mkDK" tabindex="6" required>
+            </div>
+            <div class="clearfix"></div>
+
+            <div class="address submit">
+                <input type="submit" value="Đăng kí">
+            </div>
+        </form>
+    </div>
+</div>
+<!--register-end-->
